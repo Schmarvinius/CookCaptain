@@ -19,6 +19,7 @@ const main = async () => {
         //     }); 
         //! Reads one User Doc out of the User Col
         // await readUser(client,'yannis');
+        
     } catch (e) {
         console.error(e);
     } finally {
