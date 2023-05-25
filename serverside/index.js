@@ -1,4 +1,5 @@
 const { MongoClient } = require('mongodb');
+const { creatUserCollection } = require('./model/User.js')
 const passwort = 'OVJigPqPN3S626vL';
 const username = 'admin';
 
@@ -8,15 +9,16 @@ const main = async () => {
 
     try {
         // Connect to the MongoDB cluster
-        await client.connect();
+        //await client.connect();
+        // await creatUserCollection(client);
         // Make the appropriate DB calls
         //! Reads out the Databases
         // await listDatabases(client);
         //! Adds an new User Document to the Collection User
         await addUser(client,{
-                passwort: 'yannis',
+                password: 'yannis',
                 username: 'yannis',
-                email: 'hi'
+                email: 'hi@web.de'
             }); 
         //! Reads one User Doc out of the User Col
         // await readUser(client,'yannis');
