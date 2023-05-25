@@ -13,12 +13,13 @@ const main = async () => {
         //! Reads out the Databases
         // await listDatabases(client);
         //! Adds an new User Document to the Collection User
-        // await addUser(client,{
-        //         username: 'yannis',
-        //         passwort: 'yannis'
-        //     }); 
+        await addUser(client,{
+                passwort: 'yannis',
+                username: 'yannis',
+                email: 'hi'
+            }); 
         //! Reads one User Doc out of the User Col
-        await readUser(client,'yannis');
+        // await readUser(client,'yannis');
         
     } catch (e) {
         console.error(e);
