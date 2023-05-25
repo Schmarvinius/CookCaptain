@@ -18,7 +18,7 @@ const main = async () => {
         //         passwort: 'yannis'
         //     }); 
         //! Reads one User Doc out of the User Col
-        // await readUser(client,'yannis');
+        await readUser(client,'yannis');
         
     } catch (e) {
         console.error(e);
@@ -26,21 +26,20 @@ const main = async () => {
         await client.close();
     }
 }
-
-
+//! Reads one User Doc out of the User Col
 const readUser = async (client,nameofUser) =>{
     const result = await client.db('CookCaptain').collection('User').findOne({username : nameofUser});
     console.log(result)
 }
-
+//! Adds an new User Document to the Collection User
 const addUser = async (client,user) =>{
     const result = await client.db("CookCaptain").collection("User").insertOne(user);
     console.log(result.insertedId);
 }
 
+//! Reads out the Databases
 const listDatabases = async (client) => {
     databasesList = await client.db().admin().listDatabases();
-
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
