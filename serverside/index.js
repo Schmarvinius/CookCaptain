@@ -1,52 +1,14 @@
-const { MongoClient } = require('mongodb');
-const { creatUserCollection } = require('./model/User.js')
-const passwort = 'OVJigPqPN3S626vL';
-const username = 'admin';
+const { connectDB } = require('./db/database.js');
+const createApp = require('./express/expressApp.js');
 
-const main = async () => {
-    const uri = `mongodb+srv://${username}:${passwort}@cookcaptain.978poqd.mongodb.net/?retryWrites=true&w=majority`;
-    const client = new MongoClient(uri);
+// const MyClass = require('./myClass');
 
-    try {
-        // Connect to the MongoDB cluster
-        //await client.connect();
-        // await creatUserCollection(client);
-        // Make the appropriate DB calls
-        //! Reads out the Databases
-        // await listDatabases(client);
-        //! Adds an new User Document to the Collection User
-        await addUser(client,{
-                password: 'yannis',
-                username: 'yannis',
-                email: 'hi@web.de'
-            }); 
-        //! Reads one User Doc out of the User Col
-        // await readUser(client,'yannis');
-        
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
-//! Reads one User Doc out of the User Col
-const readUser = async (client,nameofUser) =>{
-    const result = await client.db('CookCaptain').collection('User').findOne({username : nameofUser});
-    console.log(result)
-}
-//! Adds an new User Document to the Collection User
-const addUser = async (client,user) =>{
-    const result = await client.db("CookCaptain").collection("User").insertOne(user);
-    console.log(result.insertedId);
-}
+//! Connect to the database
+connectDB();
+//! Connect with Port (Express)
+const app = createApp();
 
-//! Reads out the Databases
-const listDatabases = async (client) => {
-    databasesList = await client.db().admin().listDatabases();
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
-
-
-
-main().catch(console.error);
+// await client.close();
+// // Instantiate your class
+// const myClass = new MyClass();
+// myClass.methodUsingDb();
