@@ -1,21 +1,19 @@
-const {getDB, getClient} = require('../db/database.js');
+const {sRecipe} = require('../model/recipe-model.js');
 
 const addRecipe = async (req,res) => {
-    try{
-        const recipe = req.body;
-
-
-        const  client = await getClient();
-        const result = await client.db("CookCaptain").collection("Recipe").insertOne(recipe);
-        console.log(result);
-        return res.status(200).json({'id': result.insertedId});
-    }catch (err) {
-        console.log(err);
-        return res.status(500).json(err);
-    }
-    
-
+    const newRecipe = new sRecipe(req.body);
+    newRecipe.save()
+    .then((newRecipe) => {
+      console.log('Document saved successfully:', newRecipe);
+      return res.status(200).json(newRecipe);
+    })
+    .catch((error) => {
+      console.error('Error saving document:', error);
+      return res.status(500).json(error);
+    });
 }
+//! Querry for IDs
+// { "$or": [{ "_id": ObjectId("6470a946c38f12fec02ff3f6") }, { "_id": ObjectId("6470aa7c7fd9bf1db9fb5d2f") }] }
 
 module.exports = {
     addRecipe
