@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('../routes/recipe-route.js')
+const recipeRouter = require('../routes/recipe-route.js')
 function createApp() {
   const app = express();
   const port = 3000;
@@ -8,7 +8,8 @@ function createApp() {
   //Middlewares
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use('/api/addRecipe', router)
+  app.use('/api/addRecipe', recipeRouter)
+  app.use('/api/getRecipe', recipeRouter)
 
   //Routes 
   app.get('/', (req, res) => {
