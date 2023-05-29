@@ -17,7 +17,10 @@ const recipeSchema = new schema({
     step : String,
     instruction : String
     }],
-  author: String
+  author: {
+    type : String,
+    required: true
+  }
 },{ collection: 'Recipe'});
 
 const sRecipe  = mongoose.model('Recipe', recipeSchema);
