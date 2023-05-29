@@ -10,6 +10,7 @@ function createApp() {
   app.use(express.urlencoded({ extended: true }));
   app.use('/api/addRecipe', recipeRouter)
   app.use('/api/getRecipe', recipeRouter)
+  app.use('/api/deleteRecipe',recipeRouter)
 
   //Routes 
   app.get('/', (req, res) => {
