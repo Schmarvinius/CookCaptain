@@ -1,13 +1,18 @@
 const express = require('express');
+const recipeRouter = require('../routes/recipe-route.js')
 function createApp() {
   const app = express();
   const port = 3000;
 
-  // Add your middlewares here
+
+  //Middlewares
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.use('/api/addRecipe', recipeRouter)
+  app.use('/api/getRecipe', recipeRouter)
+  app.use('/api/deleteRecipe',recipeRouter)
 
-  // Add your routes here
+  //Routes 
   app.get('/', (req, res) => {
     res.send('Hello, Express!');
   });
