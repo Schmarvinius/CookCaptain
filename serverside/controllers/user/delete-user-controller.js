@@ -18,5 +18,5 @@ const deleteUser = (req,res) => {
 }
 
 module.exports = {
-    deleteRecipe
+    deleteUser
 }
