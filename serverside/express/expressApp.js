@@ -1,5 +1,6 @@
 const express = require('express');
-const recipeRouter = require('../routes/recipe-route.js')
+const recipeRouter = require('../routes/recipe-route.js');
+const userRouter = require('../routes/user-route.js');
 function createApp() {
   const app = express();
   const port = 3000;
@@ -12,6 +13,12 @@ function createApp() {
   app.use('/api/getRecipe', recipeRouter)
   app.use('/api/deleteRecipe',recipeRouter)
   app.use('/api/updateRecipe',recipeRouter)
+
+  app.use('/api/addUser', userRouter)
+  app.use('/api/getUserById', userRouter)
+  app.use('/api/getUserByEmail', userRouter)
+  app.use('/api/deleteUser', userRouter)
+  app.use('/api/updateUser', userRouter)
 
   //Routes 
   app.get('/', (req, res) => {
