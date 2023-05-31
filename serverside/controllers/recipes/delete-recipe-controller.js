@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const {sRecipe} = require('../../model/recipe-model.js');
 const {errorHandler} = require('../errorHandler');
 

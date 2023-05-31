@@ -11,6 +11,7 @@ function createApp() {
   app.use('/api/addRecipe', recipeRouter)
   app.use('/api/getRecipe', recipeRouter)
   app.use('/api/deleteRecipe',recipeRouter)
+  app.use('/api/updateRecipe',recipeRouter)
 
   //Routes 
   app.get('/', (req, res) => {
