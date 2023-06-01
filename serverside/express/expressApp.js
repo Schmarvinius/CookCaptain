@@ -14,11 +14,7 @@ function createApp() {
   app.use('/api/deleteRecipe',recipeRouter)
   app.use('/api/updateRecipe',recipeRouter)
 
-  app.use('/api/addUser', userRouter)
-  app.use('/api/getUserById', userRouter)
-  app.use('/api/getUserByEmail', userRouter)
-  app.use('/api/deleteUser', userRouter)
-  app.use('/api/updateUser', userRouter)
+  app.use('/api/user', userRouter)
 
   //Routes 
   app.get('/', (req, res) => {
