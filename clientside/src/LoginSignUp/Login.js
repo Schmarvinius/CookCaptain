@@ -18,7 +18,6 @@ function MyLogin() {
         
         fetch('http://localhost:3000/api/user/login', {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -35,18 +34,6 @@ function MyLogin() {
     }
     function handleSignUp(){
         alert("signup");
-        fetch('http://localhost:3000/api/Recipe/Id', { 
-            method: 'POST', 
-            headers: {  
-                'Content-Type': 'application/json' 
-            },
-            mode: 'no-cors',
-            body: JSON.stringify({ 
-                "_ids": ["647268e3daa51235127c76c5"] 
-                }) })  
-                .then(response => response.json())  
-                .then(data => {  console.log(data);  })
-                .catch(error => {   console.error(error);  });
     }
 
     return (
