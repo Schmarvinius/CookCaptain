@@ -4,34 +4,43 @@ import { useNavigate } from "react-router-dom";
 
 function MyLogin() {
     const navigate = useNavigate();
-    const [isSignUp, setIsSignUp] = useState(true);
+    const [isSignUp, setIsSignUp] = useState(false);
 
     function handleLogin(){
-        var username = document.getElementById("username").value;
-        alert(username);
-        if(username === 'start'){
-            var data = {
-                "email": "til@weber.de",
-                "password": "1234"
-            };
-            fetch("http://localhost:3000/api/getUserByEmail/Email", {
-                method: 'POST',
-                headers: {
-                    'ContentType': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(function(response){
-                console.log(response);
-            })
-        }
+        // var username = document.getElementById("username").value;
+        alert("alert");
+        //console.log(username);
+        console.log("aufruf");
+        // var data = {
+        //     "email": "til@weber.de",
+        //     "password": "1234"
+        // };
         
+        fetch('http://localhost:3000/api/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email":"til@weber.de",
+                "password":"1234"
+            })
+        })
+        .then(function(response){
+            if(response.ok){
+                alert("successful");
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+
     }
     function handleSignUp(){
         alert("signup");
     }
 
     return (
-        <div class="login-container">
+        <div className="login-container">
             <h2>{isSignUp ? "Create new Account": "Login with username/email"}</h2>
             <form>
                 {isSignUp && <input type="text" placeholder="email"></input> }
@@ -40,9 +49,10 @@ function MyLogin() {
                 <br/>
                 <input type="password" placeholder="password" ></input>
                 <br/>
-                <button onClick={isSignUp? handleSignUp : handleLogin}type="submit">{isSignUp ? "Signup" : "Login"}</button>
+                <button onClick={handleLogin}type="submit">{isSignUp ? "Signup" : "Login"}</button>
+                {/* isSignUp? handleSignUp : handleLogin */}
                 <br/>
-                <text>{isSignUp ? "Already have an account?" : "Don't have an account?"}</text>
+                <p>{isSignUp ? "Already have an account?" : "Don't have an account?"}</p>
                 <button type="button"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
             </form>
         </div>
