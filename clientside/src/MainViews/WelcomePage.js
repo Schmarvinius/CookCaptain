@@ -5,6 +5,7 @@ function MyWelcomePage(){
     return (
         <div class="page-container">
             <h1>Welcome Page</h1>
+            <p>Lorem Ipsum</p>
         </div>
     );
 }

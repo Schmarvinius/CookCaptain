@@ -8,3 +8,6 @@
 /* .page-container {
     background-image: none;
 } */
+.page-container p {
+    font-size: 100px;
+}
