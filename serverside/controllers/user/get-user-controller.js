@@ -3,7 +3,6 @@ const { errorHandler } = require('../errorHandler');
 
 const getUserByID = (req,res) => { 
     userID = req.body.id;
-    console.log(userID);
     sUser.find({_id: userID})
     .then((fetchedUser) => {
         if (fetchedUser) {
@@ -19,7 +18,6 @@ const getUserByID = (req,res) => {
 
 const getUserByEmail = (req,res) => { 
     userEmail = req.body.email;
-    console.log(userEmail);
     sUser.find({email: userEmail})
     .then((fetchedUser) => {
         if (fetchedUser) {
