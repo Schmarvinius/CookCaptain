@@ -6,11 +6,10 @@ const {updateRecipe} = require('../controllers/recipes/update-recipe-controller.
 
 const router = express.Router();
 router.post('/create',addRecipe)
-router.get('/Id',getRecipeByID);
+router.post('/Id',getRecipeByID);
 router.get('/Name',getRecipeByName);
 router.get('/Author',getRecipeByAuthor);
 router.delete('/',deleteRecipe);
-router.post('/update',updateRecipe);
-
+router.put('/update',updateRecipe);
 
 module.exports = router;
