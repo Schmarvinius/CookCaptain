@@ -17,7 +17,6 @@ const getRecipeByID = async (req,res) =>{
         }else{
             return res.status(200).json(recipes);
         }
-        
     })
     .catch(error => {
         errorHandler(error,res);
