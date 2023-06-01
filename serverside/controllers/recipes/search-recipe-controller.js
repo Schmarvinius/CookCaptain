@@ -23,7 +23,7 @@ const getRecipeByID = async (req,res) =>{
     });
 }
 const getRecipeByName = async (req,res) => {
-    const name = req.body.name;
+    const name = req.query.name;
     const regex = new RegExp(name, 'i');
     sRecipe.find({name : regex})
     .then(recipes => {
@@ -38,7 +38,7 @@ const getRecipeByName = async (req,res) => {
     })
 }
 const getRecipeByAuthor = async (req,res) => {
-    const author = req.body.name;
+    const author = req.query.author;
     sRecipe.find({author : author})
     .then(recipes => {
         if (recipes.length === 0) {
