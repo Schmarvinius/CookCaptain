@@ -9,12 +9,9 @@ function createApp() {
   //Middlewares
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use('/api/addRecipe', recipeRouter)
-  app.use('/api/getRecipe', recipeRouter)
-  app.use('/api/deleteRecipe',recipeRouter)
-  app.use('/api/updateRecipe',recipeRouter)
-
+  app.use('/api/Recipe', recipeRouter)
   app.use('/api/user', userRouter)
+
 
   //Routes 
   app.get('/', (req, res) => {
