@@ -4,7 +4,7 @@ const {errorHandler} = require('../errorHandler');
 const login = (req, res) => {
     const rEmail = req.body.email;
     const rPassword = req.body.password;
-    console.log(rPassword);
+    console.log(req.body);
 
     sUser.find({email: rEmail})
     .then((fetchedUser) => {
