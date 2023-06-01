@@ -40,14 +40,14 @@ body {
     box-sizing: border-box;
     font-size: 18px;
   }
-  .login-container p{
+  /* .login-container p{
     color: blue;
     border: none;
     background-color: transparent;
     text-decoration: underline;
     font-size: 18px;
-  }
-  .login-container [type=button]{
+  } */
+  .login-container [id="switchSignUp"]{
     color: blue;
     background-color: transparent;
     border:none;

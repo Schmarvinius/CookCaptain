@@ -7,15 +7,12 @@ function MyLogin() {
     const [isSignUp, setIsSignUp] = useState(false);
 
     function handleLogin(){
-        // var username = document.getElementById("username").value;
-        alert("alert");
-        //console.log(username);
-        console.log("aufruf");
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
         var data = {
-            "email": "til@weber.de",
-            "password": "1234"
+            "email": username,
+            "password": password
         };
-        
         fetch('http://localhost:3000/api/user/login', {
             method: 'POST',
             headers: {
@@ -27,8 +24,11 @@ function MyLogin() {
             if(response.ok){
                 navigate('/welcome')
             }
+            else {
+                alert("wrong username/password")
+            }
         }).catch(err => {
-            console.log(err)
+            console.log(err);
         })
 
     }
@@ -44,15 +44,13 @@ function MyLogin() {
                 
                 <input type="text" placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
                 <br/>
-                <input type="password" placeholder="password" ></input>
+                <input type="password" id="password" placeholder="password" ></input>
                 <br/>
-                <button onClick={handleLogin}type="button">{isSignUp ? "Signup" : "Login"}</button>
-                {/* isSignUp? handleSignUp : handleLogin */}
+                <button onClick={isSignUp? handleSignUp : handleLogin}type="button">{isSignUp ? "Signup" : "Login"}</button>
                 <br/>
-                <p>{isSignUp ? "Already have an account?" : "Don't have an account?"}</p>
-                <button type="button"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
+                {isSignUp ? "Already have an account?" : "Don't have an account?"}
+                <button type="button" id="switchSignUp"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
                 <br />
-                <button onClick={handleSignUp} type="button">yannis</button>
             </form>
         </div>
     );
