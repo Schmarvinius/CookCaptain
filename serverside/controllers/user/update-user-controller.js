@@ -2,10 +2,9 @@ const { sUser } = require('../../model/user-model');
 const { errorHandler } = require('../errorHandler');
 
 const updateUser = async (req,res) => { 
-    const { userID, ...updateData } = req.body;
-    console.log(userID);
-    console.log(updateData);
-    await sUser.findByIdAndUpdate({_id: userID}, updateData, { new: true})
+    const { id, ...updateData } = req.body;
+    
+    await sUser.findByIdAndUpdate({_id: id}, updateData, { new: true})
     .then((updatedUser) => {
         if (updatedUser) {
             console.log('User updated:', updatedUser);
