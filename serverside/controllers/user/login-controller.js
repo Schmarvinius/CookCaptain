@@ -11,6 +11,10 @@ const login = (req, res) => {
 
     sUser.find({email: rEmail})
     .then((fetchedUser) => {
+        if (!fetchedUser[0].email) {
+            return res.status(400).send(`${rEmail} doesn't exist`);
+        }
+
         if (fetchedUser[0].password === rPassword) {
             return res.status(200).send("");
         } else {
