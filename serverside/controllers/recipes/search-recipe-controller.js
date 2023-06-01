@@ -3,10 +3,11 @@ const {sRecipe} = require('../../model/recipe-model.js');
 const {errorHandler} = require('../errorHandler');
 
 const getRecipeByID = async (req,res) =>{
-    const ids = req.body._ids;
-    if(!ids){
-        return res.status(404).send("No Ids")
+    if(!req.body._ids){
+        return res.status(404).send("There is no body with _ids")
     }
+    const ids = req.body._ids;
+    
     const validIds = ids.filter(id => mongoose.Types.ObjectId.isValid(id)); 
     console.log("file: search-recipe-controller.js:8 ~ getRecipeByID ~ validIds:", validIds)
     const invalidIds = ids.filter((id) => !mongoose.Types.ObjectId.isValid(id));
@@ -41,7 +42,8 @@ const getRecipeByName = async (req,res) => {
 }
 const getRecipeByAuthor = async (req,res) => {
     const author = req.query.author;
-    sRecipe.find({author : author})
+    const regex = new RegExp(author, 'i');
+    sRecipe.find({author : regex})
     .then(recipes => {
         if (recipes.length === 0) {
             return  res.status(404).json({"error" : `No Recipes with the Name : ${name} were found`})    
