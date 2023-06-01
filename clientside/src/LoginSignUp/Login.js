@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import './styles.css';
+import { useNavigate } from "react-router-dom";
 
 function MyLogin() {
-
+    const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(true);
 
     function handleLogin(){
-        alert("login");
+        navigate("/welcome");
     }
     function handleSignUp(){
         alert("signup");
@@ -24,12 +25,10 @@ function MyLogin() {
                 <br/>
                 <button onClick={isSignUp? handleSignUp : handleLogin}type="submit">{isSignUp ? "Signup" : "Login"}</button>
                 <br/>
-                {/* <p  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Already have account?": "Create Account"}</p> */}
                 <text>{isSignUp ? "Already have an account?" : "Don't have an account?"}</text>
                 <button type="button"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
             </form>
         </div>
     );
 }
-
 export default MyLogin;
