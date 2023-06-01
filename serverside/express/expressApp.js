@@ -10,12 +10,8 @@ function createApp() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use('/api/Recipe', recipeRouter)
-  
-  app.use('/api/addUser', userRouter)
-  app.use('/api/getUserById', userRouter)
-  app.use('/api/getUserByEmail', userRouter)
-  app.use('/api/deleteUser', userRouter)
-  app.use('/api/updateUser', userRouter)
+  app.use('/api/user', userRouter)
+
 
   //Routes 
   app.get('/', (req, res) => {
