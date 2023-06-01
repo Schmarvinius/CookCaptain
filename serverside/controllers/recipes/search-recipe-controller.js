@@ -4,6 +4,7 @@ const {errorHandler} = require('../errorHandler');
 
 const getRecipeByID = async (req,res) =>{
     const ids = req.body._ids;
+    console.log(req.body);
     if(!ids){
         return res.status(404).send("No Ids")
     }
