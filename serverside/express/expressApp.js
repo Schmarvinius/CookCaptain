@@ -1,6 +1,7 @@
 const express = require('express');
 const recipeRouter = require('../routes/recipe-route.js');
 const userRouter = require('../routes/user-route.js');
+const cors = require('cors')
 function createApp() {
   const app = express();
   const port = 3000;
@@ -9,6 +10,7 @@ function createApp() {
   //Middlewares
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.use(cors());
   app.use('/api/Recipe', recipeRouter)
   app.use('/api/user', userRouter)
 
