@@ -4,7 +4,9 @@ const {errorHandler} = require('../errorHandler');
 
 const getRecipeByID = async (req,res) =>{
     const ids = req.body._ids;
-
+    if(!ids){
+        return res.status(404).send("No Ids")
+    }
     const validIds = ids.filter(id => mongoose.Types.ObjectId.isValid(id)); 
     console.log("file: search-recipe-controller.js:8 ~ getRecipeByID ~ validIds:", validIds)
     const invalidIds = ids.filter((id) => !mongoose.Types.ObjectId.isValid(id));
