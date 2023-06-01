@@ -7,7 +7,24 @@ function MyLogin() {
     const [isSignUp, setIsSignUp] = useState(true);
 
     function handleLogin(){
-        navigate("/welcome");
+        var username = document.getElementById("username").value;
+        alert(username);
+        if(username === 'start'){
+            var data = {
+                "email": "til@weber.de",
+                "password": "1234"
+            };
+            fetch("http://localhost:3000/api/getUserByEmail/Email", {
+                method: 'POST',
+                headers: {
+                    'ContentType': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(function(response){
+                console.log(response);
+            })
+        }
+        
     }
     function handleSignUp(){
         alert("signup");
@@ -19,7 +36,7 @@ function MyLogin() {
             <form>
                 {isSignUp && <input type="text" placeholder="email"></input> }
                 
-                <input type="text" placeholder={isSignUp ? "username" : "username/email"} ></input>
+                <input type="text" placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
                 <br/>
                 <input type="password" placeholder="password" ></input>
                 <br/>
