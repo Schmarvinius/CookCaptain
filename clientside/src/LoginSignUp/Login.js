@@ -7,42 +7,79 @@ function MyLogin() {
     const [isSignUp, setIsSignUp] = useState(false);
 
     function handleLogin(){
-        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
-        var data = {
-            "email": username,
-            "password": password
-        };
-        fetch('http://localhost:3000/api/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(function(response){
-            if(response.ok){
-                navigate('/welcome')
-            }
-            else {
-                alert("wrong username/password")
-            }
-        }).catch(err => {
-            console.log(err);
-        })
+        if(email === "" || password === ""){
+            alert("please enter a username and a password to login")
+        }
+        else {
+            var data = {
+                "email": email,
+                "password": password
+            };
+            fetch('http://localhost:3000/api/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(function(response){
+                if(response.ok){
+                    navigate('/welcome')
+                }
+                else {
+                    alert("wrong email/password")
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+        
 
     }
     function handleSignUp(){
-        alert("signup");
+        var email = document.getElementById("email").value;
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if(email === "" || username === "" || password === ""){
+            alert("please enter correct data")
+        }
+        else {
+            var data= {
+                "name": username,
+                "password": password,
+                "email": email,
+                "likedRecipes": [],
+                "createdRecipes": []
+            }
+            fetch('http://localhost:3000/api/user/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(function(response){
+                if(response.ok){
+                    navigate('/welcome')
+                }
+                else {
+                    alert("error while creating user")
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+        }
     }
 
     return (
         <div className="login-container">
             <h2>{isSignUp ? "Create new Account": "Login with username/email"}</h2>
             <form >
-                {isSignUp && <input type="text" placeholder="email"></input> }
+                {isSignUp && <input type="text" id="username" placeholder="username"></input> }
                 
-                <input type="text" placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
+                <input type="text" placeholder={isSignUp ? "email" : "username/email"} id="email" required ></input>
                 <br/>
                 <input type="password" id="password" placeholder="password" ></input>
                 <br/>
