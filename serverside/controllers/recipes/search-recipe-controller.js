@@ -4,10 +4,9 @@ const {errorHandler} = require('../errorHandler');
 
 const getRecipeByID = async (req,res) =>{
     if(!req.body._ids){
-        return res.status(404).send("There is no body with _ids")
+        return res.status(404).send("There is are no Ids in the body")
     }
     const ids = req.body._ids;
-    
     const validIds = ids.filter(id => mongoose.Types.ObjectId.isValid(id)); 
     console.log("file: search-recipe-controller.js:8 ~ getRecipeByID ~ validIds:", validIds)
     const invalidIds = ids.filter((id) => !mongoose.Types.ObjectId.isValid(id));
@@ -26,6 +25,9 @@ const getRecipeByID = async (req,res) =>{
     });
 }
 const getRecipeByName = async (req,res) => {
+    if(!req.body.name){
+        return res.status(404).send("There is no Recipename in the body")
+    }
     const name = req.query.name;
     const regex = new RegExp(name, 'i');
     sRecipe.find({name : regex})
@@ -41,6 +43,9 @@ const getRecipeByName = async (req,res) => {
     })
 }
 const getRecipeByAuthor = async (req,res) => {
+    if(!req.body.author){
+        return res.status(404).send("There is no Author the body")
+    }
     const author = req.query.author;
     const regex = new RegExp(author, 'i');
     sRecipe.find({author : regex})
@@ -55,9 +60,6 @@ const getRecipeByAuthor = async (req,res) => {
         errorHandler(error,res)
     })
 }
-
-
-
 
 module.exports = {
     getRecipeByName,
