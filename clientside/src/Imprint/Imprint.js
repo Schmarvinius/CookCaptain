@@ -3,7 +3,22 @@ import './ImprintStyle.css';
 
 function Imprint() {
     return (
-        <h1>Hello</h1>
+        <div className="background">
+            <h1>Impressum</h1>
+             <div className="impressum-content">
+                <h2 className="impressum-heading">Contact Information</h2>
+                <p>Cook Captain</p>
+                <p>Address: Erzbergerstraße 12, Karlsruhe, Germany</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Email: CookCaptain@gmail.com</p>
+
+                <h2 className="impressum-heading">Legal Information</h2>
+                <p>Registration Number: 1234567</p>
+                <p>VAT Number: 1234567</p>
+                <p>Legal Disclaimer: Please dont sue us</p>
+            </div>
+        </div>
+    
     );
 };
 

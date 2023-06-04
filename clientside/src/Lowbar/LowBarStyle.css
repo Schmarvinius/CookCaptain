@@ -9,6 +9,9 @@
     cursor: pointer;
     color: inherit;
 }
+.text-button:hover{
+    transform: scale(1.10)
+}
 
 .ImprintContainer{
     position: fixed;
