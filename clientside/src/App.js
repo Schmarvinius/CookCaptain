@@ -2,6 +2,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import MyLogin from './LoginSignUp/Login';
 import MyWelcomePage from './MainViews/WelcomePage';
+import Lowbar from './Lowbar/Lowbar';
+ import Imprint from './Imprint/Imprint';
 
 function App() {
 
@@ -13,9 +15,13 @@ function App() {
       <Routes>
         <Route path="/" element={<MyLogin />} />
         <Route path="/welcome" element={<MyWelcomePage />} />
+        <Route path="/impressum" element={<Imprint />} /> 
+
       </Routes>
-        
+      <Lowbar/>
     </BrowserRouter>
+    
+
   );
 }
 
