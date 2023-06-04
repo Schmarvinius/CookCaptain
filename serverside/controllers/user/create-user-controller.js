@@ -1,7 +1,10 @@
 const {sUser} = require('../../model/user-model.js');
-const { errorHandler } = require('../errorHandler.js');
+const { errorHandler, bodyerror } = require('../errorHandler.js');
 
 const addUser = async (req,res) => {
+    if (bodyerror(["name", "email", "password"],req.body)) {
+        return
+    }
     const newUser = new sUser(req.body);
     newUser.save()
     .then((newUser) => {

@@ -2,6 +2,8 @@ const { sUser } = require('../../model/user-model');
 const { errorHandler } = require('../errorHandler');
 
 const getUserByID = (req,res) => { 
+    
+
     userID = req.body.id;
     sUser.find({_id: userID})
     .then((fetchedUser) => {

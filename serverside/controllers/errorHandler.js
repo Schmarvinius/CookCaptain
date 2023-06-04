@@ -13,7 +13,12 @@ const handleUndefinedPropertyError = (error, res) => {
   return false;
 };
 
+const bodyerror = (elements, body) => {
 
+  console.log(elements.every(key => Object.keys(body).includes(key)))
+
+  return check;
+}
 
 
 const errorHandler = (error, res) => {
@@ -40,5 +45,6 @@ const errorHandler = (error, res) => {
 }
 
 module.exports = {
-    errorHandler
+    errorHandler,
+    bodyerror
 }
