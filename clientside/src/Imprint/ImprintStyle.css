@@ -1,16 +1,31 @@
 .background{
-    width: 100vw;
-    height: 100vw;
+    
     text-align: center;
     background-color: white;
+    width: 100vw;
+    height: 100vh;
     padding: 10px 10px;
     font-size: 18px;
 }
-h1{
+.headbar{
+    display: flex;
     margin-top: 0px;
     width: 100vw;
     background-color: beige;
+    padding: 0px 0px;
     text-align: left;
-    padding: 10px 10px;
-}
     
+}
+.textButton{
+    background: none;
+    border: none;
+    padding: 10px;
+    font: inherit;
+    cursor: pointer;
+    color: inherit;
+    margin-right: 20px;
+    
+}
+.textButton:hover{
+    transform: scale(1.10)
+}
