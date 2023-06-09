@@ -11,7 +11,9 @@ const Headbar = () =>{
     
     return(
         <>
-           {user && user.name ? <h1>{user.name}</h1> : <h1>No user available</h1>}
+            <div className='HeadContainer'>
+                {user && user.name ? <h1>{user.name}</h1> : <h1>No user available</h1>}
+            </div>
         </>
     )
 }

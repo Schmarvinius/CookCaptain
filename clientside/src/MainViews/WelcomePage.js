@@ -8,12 +8,6 @@ function MyWelcomePage(){
     return (
         <>
             <Headbar />
-                <div className="page-container">
-                    <h1>Welcome Page</h1>
-                    <p>Lorem Ipsum</p>
-                </div>
-        
-            
         </>
         
     );
