@@ -47,21 +47,23 @@ function MyLogin() {
     }
 
     return (
-        <div className="login-container">
-            <h2>{isSignUp ? "Create new Account": "Login with username/email"}</h2>
-            <form >
-                {isSignUp && <input type="text" placeholder="email"></input> }
-                
-                <input type="text" placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
-                <br/>
-                <input type="password" id="password" placeholder="password" ></input>
-                <br/>
-                <button onClick={isSignUp? handleSignUp : handleLogin}type="button">{isSignUp ? "Signup" : "Login"}</button>
-                <br/>
-                {isSignUp ? "Already have an account?" : "Don't have an account?"}
-                <button type="button" id="switchSignUp"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
-                <br />
-            </form>
+        <div className='container'>
+            <div className="login-container">
+                <h2>{isSignUp ? "Create new Account": "Login with username/email"}</h2>
+                <form >
+                    {isSignUp && <input type="text" placeholder="email"></input> }
+                    
+                    <input type="text" placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
+                    <br/>
+                    <input type="password" id="password" placeholder="password" ></input>
+                    <br/>
+                    <button onClick={isSignUp? handleSignUp : handleLogin}type="button">{isSignUp ? "Signup" : "Login"}</button>
+                    <br/>
+                    {isSignUp ? "Already have an account?" : "Don't have an account?"}
+                    <button type="button" id="switchSignUp"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
+                    <br />
+                </form>
+            </div>
         </div>
     );
 }
