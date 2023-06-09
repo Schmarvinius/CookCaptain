@@ -6,8 +6,6 @@ import './styles.css';
 const Headbar = () =>{
     const { user } = useContext(UserContext);
     useEffect(() => {
-        console.log(user);
-        console.log(user.name);
         
       }, [user]);
     
