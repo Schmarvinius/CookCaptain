@@ -14,10 +14,7 @@ const handleUndefinedPropertyError = (error, res) => {
 };
 
 const bodyerror = (elements, body) => {
-
-  console.log(elements.every(key => Object.keys(body).includes(key)))
-
-  return check;
+  return elements.every(key => Object.keys(body).includes(key));
 }
 
 
