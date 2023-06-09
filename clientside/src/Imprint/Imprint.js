@@ -9,6 +9,7 @@ function Imprint() {
     }
     
     return(
+        <>
         <div>
             <div className="background">
                 <div className="headbar">
@@ -30,6 +31,7 @@ function Imprint() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

@@ -3,7 +3,8 @@ import './App.css';
 import MyLogin from './LoginSignUp/Login';
 import MyWelcomePage from './MainViews/WelcomePage';
 import Lowbar from './Lowbar/Lowbar';
- import Imprint from './Imprint/Imprint';
+import Imprint from './Imprint/Imprint';
+import { UserProvider } from './Context/UserContext';
 
 function App() {
 
@@ -12,12 +13,13 @@ function App() {
     //   <MyLogin/>
     // </div>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MyLogin />} />
-        <Route path="/welcome" element={<MyWelcomePage />} />
-        <Route path="/impressum" element={<Imprint />} /> 
-
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<MyLogin />} />
+          <Route path="/welcome" element={<MyWelcomePage />} />
+          <Route path="/impressum" element={<Imprint />} /> 
+        </Routes>
+      </UserProvider>
       <Lowbar/>
     </BrowserRouter>
     

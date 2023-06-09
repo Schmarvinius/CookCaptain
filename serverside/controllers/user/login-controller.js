@@ -16,7 +16,7 @@ const login = (req, res) => {
         }
 
         if (fetchedUser[0].password === rPassword) {
-            return res.status(200).send("");
+            return res.status(200).json(fetchedUser); 
         } else {
             return res.status(400).send(`Password for ${rEmail} don't match.`);
         }
