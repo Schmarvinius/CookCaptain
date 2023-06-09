@@ -2,8 +2,8 @@ const { sUser } = require('../../model/user-model');
 const { errorHandler, bodyerror } = require('../errorHandler');
 
 const updateUser = async (req,res) => { 
-    if (bodyerror(["id", "password", "email"],req.body)) {
-        return res.status(400).send(`Some data wasn't passed`);
+    if (!bodyerror(["id", "password", "email"],req.body)) {
+        return res.status(400).send(`Some required data wasn't passed`);
     }
 
     const { id, ...updateData } = req.body;

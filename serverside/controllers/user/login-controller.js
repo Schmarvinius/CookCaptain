@@ -1,9 +1,9 @@
 const { sUser } = require('../../model/user-model');
-const { errorHandler } = require('../errorHandler');
+const { errorHandler, bodyerror } = require('../errorHandler');
 
 const login = (req, res) => {
-    if (!req.body.email) { 
-        return res.status(400).send(`No body is passed.`);
+    if (!bodyerror(["email", "password"],req.body)) {
+        return res.status(400).send(`Some required data wasn't passed`);
     }
 
     const rEmail = req.body.email;
