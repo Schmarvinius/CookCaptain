@@ -36,8 +36,6 @@ function MyLogin() {
            
             setUser(userResponse); // Update the user state using setUser
             
-            console.log(user);
-            
             navigate('/welcome');
           }).catch(err => {
             console.log(err);
