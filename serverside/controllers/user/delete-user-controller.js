@@ -1,7 +1,11 @@
 const { sUser } = require('../../model/user-model');
-const { errorHandler } = require('../errorHandler');
+const { errorHandler, bodyerror } = require('../errorHandler');
 
 const deleteUser = (req,res) => {
+    if (!bodyerror(["userID"],req.body)) {
+        return res.status(400).send(`Some required data wasn't passed`);
+    }
+
     userID = req.body.userID
     console.log(userID);
     sUser.findByIdAndRemove(userID)

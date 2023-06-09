@@ -1,7 +1,11 @@
 const { sUser } = require('../../model/user-model');
-const { errorHandler } = require('../errorHandler');
+const { errorHandler, bodyerror } = require('../errorHandler');
 
 const getUserByID = (req,res) => { 
+    if (!bodyerror(["id"],req.body)) {
+        return res.status(400).send(`Some required data wasn't passed`);
+    }
+
     userID = req.body.id;
     sUser.find({_id: userID})
     .then((fetchedUser) => {
@@ -17,6 +21,10 @@ const getUserByID = (req,res) => {
 }
 
 const getUserByEmail = (req,res) => { 
+    if (!bodyerror(["email"],req.body)) {
+        return res.status(400).send(`Some required data wasn't passed`);
+    }
+
     userEmail = req.body.email;
     sUser.find({email: userEmail})
     .then((fetchedUser) => {
