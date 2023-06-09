@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import './styles.css';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../Context/UserContext';
+
 
 function MyLogin() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
+    const { user, setUser } = useContext(UserContext);
 
     function handleLogin(){
         var username = document.getElementById("username").value;
@@ -13,21 +16,30 @@ function MyLogin() {
             "email": username,
             "password": password
         };
-        fetch('http://localhost:3000/api/user/login', {
+        fetch('http://localhost:3000/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-        .then(function(response){
-            if(response.ok){
-                navigate('/welcome')
+        .then(function(response) {
+            if (response.ok) {
+    
+              return response.json();
+              
+            } else {
+              throw new Error('Login failed');
             }
-            else {
-                alert("wrong username/password")
-            }
-        }).catch(err => {
+          })
+          .then(function(userResponse) {
+           
+            setUser(userResponse); // Update the user state using setUser
+            
+            console.log(user);
+            
+            navigate('/welcome');
+          }).catch(err => {
             console.log(err);
         })
 
@@ -55,4 +67,6 @@ function MyLogin() {
         </div>
     );
 }
+
+
 export default MyLogin;
