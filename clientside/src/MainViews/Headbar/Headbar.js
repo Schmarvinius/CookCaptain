@@ -1,6 +1,6 @@
 import { UserContext } from '../../Context/UserContext';
 import React, { useContext , useEffect } from 'react';
-import './styles.css';
+import './headbarStyles.css';
 
 
 const Headbar = () =>{
@@ -11,7 +11,7 @@ const Headbar = () =>{
     
     return(
         <>
-            <div className='HeadContainer'>
+            <div className='headbar-Container'>
                 {user && user.name ? <h1>{user.name}</h1> : <h1>No user available</h1>}
             </div>
         </>
