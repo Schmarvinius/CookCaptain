@@ -7,7 +7,7 @@ import { UserContext } from '../Context/UserContext';
 function MyLogin() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     function handleLogin(){
         var username = document.getElementById("username").value;
@@ -33,8 +33,8 @@ function MyLogin() {
             }
           })
           .then(function(userResponse) {
-           
-            setUser(userResponse); // Update the user state using setUser
+            setUser(userResponse[0]); // Update the user state using setUser (async)
+            
             
             navigate('/welcome');
           }).catch(err => {
