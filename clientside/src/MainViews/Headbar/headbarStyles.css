@@ -1,6 +1,55 @@
-.headbar-Container{
-    margin-top: 0%;
+.headbar-Container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.7);
+    height: 7%;
+    width: 100vw;
+    flex-wrap: nowrap;
     
-   
-   
+  }
+  
+  .headbar-picture {
+    width: 100px;
+    height: auto;
+  }
+  
+  .headbar-text {
+    padding-left: 0%;
+    margin-left: 8px;
+    color: black;
+    font-size: 30px;
+  }
+
+  .headbar-link-user {
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    padding-left: 1%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .headbar-link {
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    padding-left: 1%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 8%;
+  }
+
+.navigation-container{
+    display: flex;
+    align-items: center;
+    padding-left: 1%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 3;
+    margin-right: 0px;
 }
+  
+  

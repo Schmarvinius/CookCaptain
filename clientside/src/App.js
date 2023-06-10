@@ -19,8 +19,8 @@ function App() {
           <Route path="/welcome" element={<MyWelcomePage />} />
           <Route path="/impressum" element={<Imprint />} /> 
         </Routes>
+        <Lowbar/>
       </UserProvider>
-      <Lowbar/>
     </BrowserRouter>
     
 
