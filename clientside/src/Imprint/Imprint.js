@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from 'react';
 import './ImprintStyle.css';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../Context/UserContext';
+
 
 function Imprint() {
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
     const handleBackClick = () => {
-        navigate("/");
+        if(user === null){
+           return navigate("/");
+        }
+        return navigate("/recommandation")
     }
     
     return(
