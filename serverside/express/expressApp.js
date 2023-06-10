@@ -12,7 +12,7 @@ function createApp() {
   app.use(express.urlencoded({ extended: true }));
   app.use(cors());
   app.use('/api/Recipe', recipeRouter)
-  app.use('/api/user', userRouter)
+  app.use('/user', userRouter)
 
 
   //Routes 

@@ -1,16 +1,24 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-image: url(".//../images/doner.png");
+    background-image: url(".//../images/doner.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    font-size: 18px;
+    background-color: #414040;
+    overflow-x: hidden;
+    overflow-y: auto; 
+    height: 100vh;
+    width: 100vw;
+
+    
+  }
+  .container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
   }
   .login-container h2 {
     font-size: 24px;
