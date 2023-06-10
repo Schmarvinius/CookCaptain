@@ -11,7 +11,7 @@ function Imprint() {
         if(user === null){
            return navigate("/");
         }
-        return navigate("/welcome")
+        return navigate("/recommandation")
     }
     
     return(
