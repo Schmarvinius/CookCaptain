@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const Headbar = () =>{
     const { user } = useContext(UserContext);
     useEffect(() => {
-        
       }, [user]);
     
     return(
