@@ -3,7 +3,7 @@ import './App.css';
 import MyLogin from './LoginSignUp/Login';
 import RecommandationPage from './MainViews/RecommendationPage.js';
 import SearchPage from './MainViews/SearchPage.js';
-import SafedRecipePage from './MainViews/SafedPage.js';
+import SafedRecipePage from './MainViews/SafedRecipePage.js';
 import Lowbar from './Lowbar/Lowbar';
 import Imprint from './Imprint/Imprint';
 import { UserProvider } from './Context/UserContext';
