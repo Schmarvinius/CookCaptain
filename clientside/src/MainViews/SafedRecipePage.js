@@ -1,8 +1,5 @@
-import './styles.css';
 import './SafedRecipePage.css'
 import userIcon from '../images/userIcon.png';
-import Headbar from './Headbar/Headbar.js';
-import axios from 'axios';
 import React, { useState, useContext , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext';

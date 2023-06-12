@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './styles.css';
+import './LoginStyles.css';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../Context/UserContext';
 
@@ -51,9 +51,9 @@ function MyLogin() {
             <div className="login-container">
                 <h2>{isSignUp ? "Create new Account": "Login with username/email"}</h2>
                 <form >
-                    {isSignUp && <input type="text" placeholder="email"></input> }
+                    {isSignUp && <input type="text" placeholder="email" id="email"></input> }
                     
-                    <input type="text" placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
+                    <input type="text" className="login-container-input"  placeholder={isSignUp ? "username" : "username/email"} id="username" ></input>
                     <br/>
                     <input type="password" id="password" placeholder="password" ></input>
                     <br/>
