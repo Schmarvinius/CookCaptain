@@ -36,7 +36,7 @@ function MyLogin() {
             setUser(userResponse[0]); // Update the user state using setUser (async)
             
             
-            navigate('/recommandation');
+            navigate('/home');
           }).catch(err => {
             console.log(err);
         })

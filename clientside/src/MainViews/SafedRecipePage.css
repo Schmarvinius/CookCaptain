@@ -8,14 +8,27 @@
     background: #f2f2f2;
     padding: 16px;
   }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: none;
+
+  .headbar-text{
+    padding-left: 0%;
+    margin-left: 8px;
+    color: black;
+    font-size: 30px;
+    text-decoration: none; 
   }
-  
+  .headbar-link-user{
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    padding-left: 1%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .headbar-picture{
+    width: 100px;
+    height: auto;
+  }
   .modules {
     display: flex;
     flex-wrap: wrap;
@@ -25,7 +38,7 @@
   
   .main {
     flex-basis: calc(70%);
-    background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.7); 
     padding: 16px;
     margin-bottom: 16px;
     margin-right: 10px;

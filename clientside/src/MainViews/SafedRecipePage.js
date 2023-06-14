@@ -1,40 +1,16 @@
 import './SafedRecipePage.css'
-import userIcon from '../images/userIcon.png';
-import React, { useState, useContext , useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext , useEffect } from 'react';
 import { UserContext } from '../Context/UserContext';
+import HeadBar from './Headbar/Headbar.js';
 
 const App = () => {
   const { user } = useContext(UserContext);
     useEffect(() => {
-      }, [user]);
-
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
+    }, [user]);
 
   return (
     <div className="app">
-      <header class = "modules">
-        {/* Bei Suche Redirection auf search Page */}
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={handleSearch}
-          class = "searchbar"
-        />
-
-        <Link to="../profil" className='headbar-link-user' class="categories">
-          <img className='headbar-picture' src={userIcon} alt='User-Icon' />
-          <div className='headbar-text'>
-            {user && user.name ? <span>{user.name}</span> : <span>No user available</span>}
-          </div>
-        </Link> 
-        {/*Profil Bild auf die rechte Seite*/}
-      </header>
+      <HeadBar />
 
       <main className="modules">
         <div className="categories">
