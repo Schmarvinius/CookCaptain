@@ -1,20 +1,19 @@
 import { UserContext } from '../../Context/UserContext';
-import React, { useState, useContext , useEffect } from 'react';
+import React, { useContext , useEffect } from 'react';
 import userIcon from '../../images/userIcon.png';
 import './headbarStyles.css';
 import { Link } from 'react-router-dom';
-
+import { SearchContext } from '../../Context/SearchContext.js';
 
 const Headbar = () =>{
+    const { searchQuery, setSearchQuery } = useContext(SearchContext);
     const { user } = useContext(UserContext);
     useEffect(() => {
     }, [user]);
 
-  const [searchQuery, setSearchQuery] = useState('');
-
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-    console.log(e.target.value);
+    
   };
     
     return(
@@ -22,7 +21,8 @@ const Headbar = () =>{
             <div className='headbar-Container'>
                 <div className='Search-Container'>
                     <input
-                        type="text"
+                        type="lable"
+                        
                         placeholder="Search..."
                         value={searchQuery}
                         onChange={handleSearch}

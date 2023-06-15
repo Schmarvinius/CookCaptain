@@ -2,6 +2,8 @@ import './SafedRecipePage.css'
 import React, { useContext , useEffect } from 'react';
 import { UserContext } from '../Context/UserContext';
 import HeadBar from './Headbar/Headbar.js';
+import RecipeMain from './RecipePage/RecipeMain.js';
+import { SearchProvider } from '../Context/SearchContext.js';
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -9,21 +11,23 @@ const App = () => {
     }, [user]);
 
   return (
-    <div className="app">
-      <HeadBar />
+    <SearchProvider>
+      <div className="app">
+        <HeadBar />
 
-      <main className="modules">
-        <div className="categories">
-          <h2>Kategorien</h2>
-          {/* Categories */}
-        </div>
+        <main className="modules">
+          <div className="categories">
+            <h2>Liked</h2>
+            {/* Categories */}
+          </div>
 
-        <div className="main">
-          <h2>Main</h2>
-          {/* Main Module mit Reccomendations Rezepten */}
-        </div>
-      </main>
-    </div>
+          <div className="main">
+            <h2>Recipes</h2>
+            <RecipeMain />
+          </div>
+        </main>
+      </div>
+    </SearchProvider>
   );
 };
 
