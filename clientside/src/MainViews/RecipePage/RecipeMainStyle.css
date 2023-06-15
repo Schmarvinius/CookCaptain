@@ -1,0 +1,10 @@
+.list{
+    
+}
+.listitem-recipe {
+    list-style: none;
+    background-color: white;
+    padding: 8px;
+    margin-bottom: 8px
+    
+  }
