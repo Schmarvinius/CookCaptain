@@ -1,5 +1,6 @@
 const { sUser } = require('../../model/user-model');
 const { errorHandler, bodyerror } = require('../errorHandler');
+const cookieParser = require('cookie-parser');
 
 const login = (req, res) => {
     if (!bodyerror(["email", "password"],req.body)) {
@@ -14,8 +15,8 @@ const login = (req, res) => {
         if (!fetchedUser[0].email) {
             return res.status(400).send(`${rEmail} doesn't exist`);
         }
-
         if (fetchedUser[0].password === rPassword) {
+            res.cookie("user", fetchedUser[0]);
             return res.status(200).json(fetchedUser); 
         } else {
             return res.status(400).send(`Password for ${rEmail} don't match.`);
