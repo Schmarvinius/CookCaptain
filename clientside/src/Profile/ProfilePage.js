@@ -1,25 +1,25 @@
-import React, { useState, useContext , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
-    const [data, setData] = useState([]);
+    const [likes, setRecipes] = useState([]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/Recipe/likes');
+        setRecipes(response.data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch('localhost:3000/user/liked');
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.log('Error fetching data:', error);
-    }
-  };
-
     return(
-        <div className='app'>
+        <div className='siteContainer'>
             <div className='profileData'>
                 <span className='dot'></span>
                 {/* <img className='profileImage'/> */}
@@ -40,11 +40,10 @@ const ProfilePage = () => {
                 <div className='createdRecipes'>
                     <h1>Erstellte Rezepte</h1>
                     <ul className='list'>
-                    {/* {safed.map((recipe) => (
+                    {likes.map((recipe) => (
                         <li className="listitem-recipe" key={recipe._id}>{recipe.name}</li>
-                    ))} */}
+                    ))}
                     </ul>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                     {/* Display a list of all created recipes */}
                 </div>
                 <div className='likedRecipes'>
@@ -54,7 +53,6 @@ const ProfilePage = () => {
                         <li className="listitem-recipe" key={recipe._id}>{recipe.name}</li>
                     ))} */}
                     </ul>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                     {/* Display a list of all liked recipes */}
                 </div>
             </div>
