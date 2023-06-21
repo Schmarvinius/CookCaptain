@@ -8,7 +8,6 @@
 
 .container-List {
   height: 600px;
-
   overflow: auto;
 }
 .listitem-recipe:hover{
@@ -17,10 +16,14 @@
   animation: fadeOut 0.4s;
   
 }
-
-
-.text-container{
+.author-container{
   margin-top: 20px;
+  text-align: left;
+  max-width: 200px;
+}
+
+.name-container{
+  margin-top: 3px;
   text-align: center;
   
 }
@@ -30,11 +33,13 @@
 }
 .author{
   margin-top: 28px;
-  max-width: 200px;
+  width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
 }
+
 
 .list {
   display: grid;

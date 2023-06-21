@@ -36,10 +36,10 @@ const RecipeMain = () => {
                                     <div className='image-wrapper'>
                                         <img className='food-picture' src={userIcon} alt='Food-Icon' />
                                     </div>
-                                    <div className='text-container'>
+                                    <div className='name-container'>
                                         <span className='name'>{recipe.name}</span> 
                                     </div>
-                                    <div className='text-container'>
+                                    <div className='author-container'>
                                         <span className='author truncate' onClick={(e) => { e.stopPropagation(); console.log(recipe.author) }}>Author: {recipe.author}</span> 
                                     </div>
                                 </div>
