@@ -1,0 +1,63 @@
+.siteContainer {
+    min-height: 99vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.profileData {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 15px;
+    padding: 5px;
+    max-height: 90%;
+}
+
+.main2 {
+    flex: 3;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+.recipes {
+    flex: 8;
+    display: flex;
+    padding: 5px;
+}
+
+.createdRecipes {
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    overflow: scroll;
+    height: 90%;
+    min-width: 45%;
+}
+
+.likedRecipes {
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    overflow: scroll;
+    height: 90%;
+    min-width: 45%;
+}
+
+.submitButton {
+    flex: 1;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(50%,50%);
+}
+
+.dot {
+    height: 50%;
+    width: 100%;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
