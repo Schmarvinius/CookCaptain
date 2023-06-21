@@ -4,6 +4,7 @@ import MyLogin from './LoginSignUp/Login';
 import HomePage from './MainViews/MainView';
 import Lowbar from './Lowbar/Lowbar';
 import Imprint from './Imprint/Imprint';
+import Profile from './Profile/ProfilePage'
 import { UserProvider } from './Context/UserContext';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<MyLogin />} />
           <Route path="/home" element={<HomePage/>} />
           <Route path="/impressum" element={<Imprint />} /> 
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Lowbar/>
       </UserProvider>
