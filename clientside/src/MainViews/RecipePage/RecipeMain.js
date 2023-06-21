@@ -1,13 +1,8 @@
-
 import React, { useState, useContext , useEffect } from 'react';
 import './RecipeMainStyle.css';
 import axios from 'axios';
 import { SearchContext } from '../../Context/SearchContext';
-
- 
-
-
-
+import userIcon from '../../images/Exampleimage.png';
 
 const RecipeMain = () => {
     const { searchQuery } = useContext(SearchContext);
@@ -31,17 +26,30 @@ const RecipeMain = () => {
 
     return (
         <>
-            <span></span>
-            <div classname='listitem-recipe'>
-                {recipes.length > 0 ? (
-                    <ul className='list'>
-                    {recipes.map((recipe) => (
-                        <li className="listitem-recipe" key={recipe._id}>{recipe.name}</li>
-                    ))}
-                    </ul>
-                ) : (
-                    <p>No recipes found.</p>
-                )} 
+            <div className='container-List'>
+                <div classname='listitem-recipe'>
+                    {recipes.length > 0 ? (
+                        <ul className='list'>
+                        {recipes.map((recipe) => (    
+                             <li className="listitem-recipe" key={recipe._id} onClick={() => console.log('HI ' + recipe.name)}>
+                                <div className='Container-List-Recipe'>
+                                    <div className='image-wrapper'>
+                                        <img className='food-picture' src={userIcon} alt='Food-Icon' />
+                                    </div>
+                                    <div className='name-container'>
+                                        <span className='name'>{recipe.name}</span> 
+                                    </div>
+                                    <div className='author-container'>
+                                        <span className='author truncate' onClick={(e) => { e.stopPropagation(); console.log(recipe.author) }}>Author: {recipe.author}</span> 
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                        </ul>
+                    ) : (
+                        <p>No recipes found.</p>
+                    )} 
+                </div>
             </div>
         </>
     )
