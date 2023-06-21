@@ -30,7 +30,7 @@ const Headbar = () =>{
                         
                     />
                 </div>
-                <Link to="../profil" className='headbar-link-user'>
+                <Link to="../profile" className='headbar-link-user'>
                     <div className='headbar-text'>
                         {user && user.name ? <span>{user.name}</span> : <span>No user available</span>}
                     </div>
