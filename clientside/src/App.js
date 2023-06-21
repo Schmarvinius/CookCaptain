@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import MyLogin from './LoginSignUp/Login';
-import HomePage from './MainViews/SafedRecipePage.js';
+import HomePage from './MainViews/MainView';
 import Lowbar from './Lowbar/Lowbar';
 import Imprint from './Imprint/Imprint';
 import { UserProvider } from './Context/UserContext';

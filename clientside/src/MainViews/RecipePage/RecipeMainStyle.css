@@ -1,10 +1,59 @@
-.list{
-    
-}
 .listitem-recipe {
-    list-style: none;
-    background-color: white;
-    padding: 8px;
-    margin-bottom: 8px
-    
-  }
+  list-style: none;
+  background-color: white;
+  padding: 8px;
+  margin-bottom: 8px;
+  max-width: 220px;
+}
+
+.container-List {
+  height: 600px;
+
+  overflow: auto;
+}
+.listitem-recipe:hover{
+  transform: scale(1.05);
+  transition: 0.4s ease-in-out;
+  animation: fadeOut 0.4s;
+  
+}
+
+
+.text-container{
+  margin-top: 20px;
+  text-align: center;
+  
+}
+.name{
+  font-size: 14;
+  font-weight: 500;
+}
+.author{
+  margin-top: 28px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.Container-List-Recipe {
+  max-height: 300px;
+}
+
+.image-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.food-picture {
+  max-width: 200px;
+  max-height: auto;
+}
