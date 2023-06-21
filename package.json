@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "concurrently": "^8.2.0",
     "cookie-parser": "^1.4.6",
     "mongoose-random": "^0.1.1",
     "react-router-dom": "^6.11.2"
