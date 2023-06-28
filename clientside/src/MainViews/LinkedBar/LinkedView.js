@@ -51,7 +51,7 @@ const LinkedView = () =>{
         <>
             <div className='scrollable-container'>
                 {recipes.length > 0 ? (
-                <ul>
+                <ul className='list'>
                     {recipes.map((recipe) => (
                     <li className="listitem-recipe" key={recipe.id}>
                       <div className='Container-List-Recipe'>

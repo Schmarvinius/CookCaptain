@@ -7,7 +7,7 @@
 }
 
 .container-List {
-  height: 600px;
+  height: 75vh;
   overflow: auto;
 }
 .listitem-recipe:hover{
@@ -42,7 +42,7 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
 }
 
