@@ -1,4 +1,4 @@
-import './SafedRecipePage.css'
+import './MainViewStyle.css'
 import React, { useContext , useEffect } from 'react';
 import { UserContext } from '../Context/UserContext';
 import HeadBar from './Headbar/Headbar.js';
