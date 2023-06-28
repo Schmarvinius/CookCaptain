@@ -4,11 +4,10 @@
   padding: 8px;
   margin-bottom: 8px;
   max-width: 220px;
+
 }
-.buttonForLike{
-  position: absolute;
-  top: 10px; /* Adjust the vertical position as needed */
-  right: 10px; /* Adjust the horizontal position as needed */
+.buttonForLike {
+  justify-content: flex-end;
   background: none;
   border: none;
   cursor: pointer;

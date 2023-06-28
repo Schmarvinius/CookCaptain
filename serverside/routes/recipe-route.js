@@ -3,7 +3,7 @@ const { addRecipe } = require('../controllers/recipes/create-recipe-controller.j
 const { getRecipeByID , getRecipeByName, getRecipeByAuthor } = require('../controllers/recipes/search-recipe-controller.js');
 const { deleteRecipe } = require('../controllers/recipes/delete-recipe-controller.js');
 const { updateRecipe } = require('../controllers/recipes/update-recipe-controller.js');
-const { likeRecipe } = require('../controllers/recipes/like-recipe-controller.js');
+const { addlikeRecipe , unlikeRecipe } = require('../controllers/recipes/like-recipe-controller.js');
 const { getRecommendation }  = require('../controllers/recipes/recommendations-controller.js');
 const { getLikedRecipe, getCreatedRecipe} = require('../controllers/profile/sl-recipes-controller.js');
 
@@ -17,7 +17,8 @@ router.get('/created', getCreatedRecipe);
 router.get('/recommendation', getRecommendation);
 router.delete('/',deleteRecipe);
 router.put('/update',updateRecipe);
-router.patch('/like',likeRecipe);
+router.patch('/like',addlikeRecipe);
+router.delete('/like',unlikeRecipe)
 
 
 module.exports = router;
