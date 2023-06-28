@@ -3,6 +3,7 @@ import React, { useContext , useEffect } from 'react';
 import { UserContext } from '../Context/UserContext';
 import HeadBar from './Headbar/Headbar.js';
 import RecipeMain from './RecipePage/RecipeMain.js';
+import LinkedView from './LinkedBar/LinkedView.js';
 import { SearchProvider } from '../Context/SearchContext.js';
 
 const App = () => {
@@ -16,9 +17,9 @@ const App = () => {
         <HeadBar />
 
         <main className="modules">
-          <div className="categories">
+          <div className="Linked">
             <h2>Liked</h2>
-            {/* Categories */}
+            <LinkedView/>
           </div>
 
           <div className="main">

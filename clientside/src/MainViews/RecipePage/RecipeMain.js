@@ -2,7 +2,7 @@ import React, { useState, useContext , useEffect } from 'react';
 import './RecipeMainStyle.css';
 import axios from 'axios';
 import { SearchContext } from '../../Context/SearchContext';
-import userIcon from '../../images/Exampleimage.png';
+import foodIcon from '../../images/Exampleimage.png';
 
 const RecipeMain = () => {
     const { searchQuery } = useContext(SearchContext);
@@ -34,7 +34,7 @@ const RecipeMain = () => {
                              <li className="listitem-recipe" key={recipe._id} onClick={() => console.log('HI ' + recipe.name)}>
                                 <div className='Container-List-Recipe'>
                                     <div className='image-wrapper'>
-                                        <img className='food-picture' src={userIcon} alt='Food-Icon' />
+                                        <img className='food-picture' src={foodIcon} alt='Food-Icon' />
                                     </div>
                                     <div className='name-container'>
                                         <span className='name'>{recipe.name}</span> 
