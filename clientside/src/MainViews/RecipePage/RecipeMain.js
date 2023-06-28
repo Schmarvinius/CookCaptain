@@ -3,6 +3,8 @@ import './RecipeMainStyle.css';
 import axios from 'axios';
 import { SearchContext } from '../../Context/SearchContext';
 import foodIcon from '../../images/Exampleimage.png';
+import notLikeIcon from '../../images/notLiked.png';
+import likeIcon from '../../images/liked.png';
 
 const RecipeMain = () => {
     const { searchQuery } = useContext(SearchContext);
@@ -36,6 +38,15 @@ const RecipeMain = () => {
                                     <div className='image-wrapper'>
                                         <img className='food-picture' src={foodIcon} alt='Food-Icon' />
                                     </div>
+                                    <button
+                                        className="buttonForLike"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            console.log("liked " + recipe.author);
+                                        }}
+                                        >
+                                        {/* <img className="like-icon" src={notLikeIcon} alt="Like Icon" /> */}
+                                    </button>
                                     <div className='name-container'>
                                         <span className='name'>{recipe.name}</span> 
                                     </div>
