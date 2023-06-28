@@ -5,11 +5,11 @@ const { sRecipe } = require('../../model/recipe-model.js');
 const { sUser } = require('../../model/user-model.js');
 
 const getLikedRecipe = async (req,res) => { 
-    if (!bodyerror(["email"],req.body)) {
+    if (!req.query.email) {
         return res.status(400).send(`Some required data wasn't passed`);
     }
 
-    email = req.body.email;
+    email = req.query.email;
     sUser.find({email: email})
     .then(async (fetchedUser) => {
         if (fetchedUser) {
@@ -37,11 +37,11 @@ const getLikedRecipe = async (req,res) => {
 }
 
 const getCreatedRecipe = async (req,res) => {
-    if (!bodyerror(["email"],req.body)) {
+    if (!req.query.email) {
         return res.status(400).send(`Some required data wasn't passed`);
     }
 
-    email = req.body.email;
+    email = req.query.email;
     sUser.find({email: email})
     .then(async (fetchedUser) => {
         if (fetchedUser) {
