@@ -9,19 +9,22 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     margin: 15px;
     padding: 5px;
-    max-height: 90%;
+    height: calc(90vh - 10px);
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .main2 {
     flex: 3;
     margin: 5px;
+    height: calc(90vh - 10px);
     display: flex;
     flex-direction: column;
-
 }
+
 .recipes {
     flex: 8;
     display: flex;
@@ -31,33 +34,68 @@
 .createdRecipes {
     margin: 5px;
     padding: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     overflow: scroll;
-    height: 90%;
     min-width: 45%;
+    border-radius: 10px;
 }
 
 .likedRecipes {
     margin: 5px;
     padding: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     overflow: scroll;
-    height: 90%;
     min-width: 45%;
+    border-radius: 10px;
 }
 
-.submitButton {
+.submitButton { /* positioning */
     flex: 1;
     position: relative;
     left: 50%;
     top: 50%;
-    transform: translate(50%,50%);
+    width: 50vw;
+    height: 5vh;
+    transform: translate(-50%,-50%);
 }
 
-.dot {
-    height: 50%;
-    width: 100%;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
+.submitButton {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.profilePic {
+    max-width: 30vw;
+    max-height: 30vh;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+}
+
+.userData>span {
+    margin-top: 1vh;
+    display: block;
+}
+
+.reset {
+
 }
