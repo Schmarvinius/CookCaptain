@@ -4,6 +4,9 @@
   max-width: 220px;
 
 }
+.Container-List-Recipe {
+  max-height: 350px;
+}
 .buttonForLike {
   justify-content: flex-end;
   background: none;

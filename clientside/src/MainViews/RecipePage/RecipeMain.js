@@ -89,6 +89,7 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
 
   return (
     <>
+    <div className='container-List'>
       <div classname="listitem-recipe">
         {recipes.length > 0 ? (
           <ul className="list">
@@ -140,6 +141,7 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
         ) : (
           <p>No recipes found.</p>
         )}
+      </div>
       </div>
     </>
   );
