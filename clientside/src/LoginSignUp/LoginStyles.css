@@ -8,9 +8,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto; 
     height: 100vh;
-    width: 100vw;
-
-    
+    width: 100vw;    
   }
   .container{
     height: 100vh;
@@ -33,14 +31,27 @@ body {
     font-size: 18px;
   }
   
-  .login-container input {
+  .login-container input, #username, #email {
     margin-bottom: 10px;
     width: 60%;
     padding: 10px;
     box-sizing: border-box;
     font-size: 18px;
   }
+
+
+
+  .login-container #username, #email {
+    margin-bottom: 10px;
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border: 1px solid ;
+    border-radius: 2px;
+  }
   
+
   .login-container button {
     margin-bottom: 20px;
     width: 60%;

@@ -25,9 +25,6 @@ const getRecipeByID = async (req,res) =>{
     });
 }
 const getRecipeByName = async (req,res) => {
-    if(!req.body.name){
-        return res.status(404).send("There is no Recipename in the body")
-    }
     const name = req.query.name;
     const regex = new RegExp(name, 'i');
     sRecipe.find({name : regex})
@@ -43,9 +40,6 @@ const getRecipeByName = async (req,res) => {
     })
 }
 const getRecipeByAuthor = async (req,res) => {
-    if(!req.body.author){
-        return res.status(404).send("There is no Author the body")
-    }
     const author = req.query.author;
     const regex = new RegExp(author, 'i');
     sRecipe.find({author : regex})

@@ -25,6 +25,7 @@ const userSchema = new schema({
         type: Date
     },
     likedRecipes: [{
+        unique: false,
         type: String,
     }],
     createdRecipes: [{
