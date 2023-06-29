@@ -68,39 +68,39 @@ const LinkedView = ({ onLikeRecipeChange, likeRecipeChanged }) =>{
       }, [user, likeRecipeChanged]); 
     return(
         <>
-            <div className='scrollable-container'>
-                {recipes.length > 0 ? (
-                <ul className='list'>
-                    {recipes.map((recipe) => (
-                    <li className="listitem-recipe" key={recipe.id}>
-                      <div className='Container-List-Recipe'>
-                        <button
-                            className="buttonForLike"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                handelLikeRecipe(recipe);
-                                
-                            }}
-                            >
-                            <img className="like-icon" src={ likeIcon} alt="Like Icon"/>
-                        </button>
-                        <div className='image-wrapper'>
-                            <img className='food-picture' src={foodIcon} alt='Food-Icon' />
-                        </div>
-                        <div className='name-container'>
-                            <span className='name'>{recipe.name}</span> 
-                        </div>
-                        <div className='author-container'>
-                            <span className='author truncate' onClick={(e) => { e.stopPropagation(); console.log(recipe.author) }}>Author: {recipe.author}</span> 
-                        </div>
+          <div className='scrollable-container'>
+              {recipes.length > 0 ? (
+              <ul className='list'>
+                  {recipes.map((recipe) => (
+                  <li className="listitem-recipe" key={recipe.id}>
+                    <div className='Container-List-Recipe'>
+                      <button
+                          className="buttonForLike"
+                          onClick={(e) => {
+                              e.stopPropagation();
+                              handelLikeRecipe(recipe);
+                              
+                          }}
+                          >
+                          <img className="like-icon" src={ likeIcon} alt="Like Icon"/>
+                      </button>
+                      <div className='image-wrapper'>
+                          <img className='food-picture' src={foodIcon} alt='Food-Icon' />
                       </div>
-                    </li>
-                    ))}
-                </ul>
-                ) : (
-                <p>No recipes found.</p>
-                )}
-            </div>
+                      <div className='name-container'>
+                          <span className='name'>{recipe.name}</span> 
+                      </div>
+                      <div className='author-container'>
+                          <span className='author truncate' onClick={(e) => { e.stopPropagation(); console.log(recipe.author) }}>Author: {recipe.author}</span> 
+                      </div>
+                    </div>
+                  </li>
+                  ))}
+              </ul>
+              ) : (
+              <p>No recipes found.</p>
+              )}
+          </div>
         </>
     )
 }

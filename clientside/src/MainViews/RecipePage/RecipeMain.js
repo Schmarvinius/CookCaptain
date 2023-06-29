@@ -59,8 +59,18 @@ const RecipeMain = ({onLikeRecipeChange , likeRecipeChanged}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-              const response = await axios.get(`http://localhost:3000/api/Recipe/Name?name=${searchQuery}`);
-              setRecipes(response.data);
+                if(searchQuery){
+                    const response = await axios.get(`http://localhost:3000/api/Recipe/Name?name=${searchQuery}`);
+                    setRecipes(response.data);
+                }else{
+                    const response = await axios.get(`http://localhost:3000/api/Recipe/pre`);
+                    setRecipes(response.data);
+                    
+                    
+                }
+
+
+              
             } catch (error) {
                 if (error.response && error.response.status === 404) {
                     setRecipes([]);
@@ -74,7 +84,7 @@ const RecipeMain = ({onLikeRecipeChange , likeRecipeChanged}) => {
 
     return (
         <>
-            <div className='container-List'>
+            
                 <div classname='listitem-recipe'>
                     {recipes.length > 0 ? (
                         <ul className='list'>
@@ -108,7 +118,7 @@ const RecipeMain = ({onLikeRecipeChange , likeRecipeChanged}) => {
                         <p>No recipes found.</p>
                     )} 
                 </div>
-            </div>
+            
         </>
     )
 

@@ -1,8 +1,6 @@
 .listitem-recipe {
   list-style: none;
   background-color: white;
-  padding: 8px;
-  margin-bottom: 8px;
   max-width: 220px;
 
 }
@@ -58,9 +56,7 @@
   grid-gap: 20px;
 }
 
-.Container-List-Recipe {
-  max-height: 300px;
-}
+
 
 .image-wrapper {
   flex: 1;

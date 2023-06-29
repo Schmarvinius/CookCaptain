@@ -41,7 +41,6 @@
     background: rgba(255, 255, 255, 0.7); 
     padding: 16px;
     margin-bottom: 16px;
-    margin-right: 10px;
     border: 1px solid #ccc;
   }
 
@@ -50,8 +49,8 @@
     background: rgba(255, 255, 255, 0.7); 
     padding: 16px;
     margin-bottom: 16px;
-    margin-left: 10px;
     border: 1px solid #ccc;
+    /* max-width: fit-content  */
   }
 
   .searchbar {

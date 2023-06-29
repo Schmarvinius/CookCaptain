@@ -2,6 +2,16 @@ const mongoose = require('mongoose');
 const {sRecipe} = require('../../model/recipe-model.js');
 const {errorHandler} = require('../errorHandler');
 
+
+const preLoadRecipes = async (req,res) => {
+    try {
+        const recipes = await sRecipe.aggregate([{ $sample: { size: 20 } }]);
+        res.status(200).json(recipes);
+      } catch (error) {
+        errorHandler(error, res);
+      }
+}
+
 const getRecipeByID = async (req,res) =>{
     if(!req.body._ids){
         return res.status(404).send("There is are no Ids in the body")
@@ -58,5 +68,6 @@ const getRecipeByAuthor = async (req,res) => {
 module.exports = {
     getRecipeByName,
     getRecipeByAuthor,
-    getRecipeByID
+    getRecipeByID,
+    preLoadRecipes,
 }
