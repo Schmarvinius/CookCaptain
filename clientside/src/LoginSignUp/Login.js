@@ -9,8 +9,12 @@ function MyLogin() {
     const [isSignUp, setIsSignUp] = useState(false);
     const { user, setUser } = useContext(UserContext);
 
+
     function handleLogin(){
         var email = document.getElementById("email").value;
+        if(!validateEmail(email)){
+            return alert("please enter a correct email adress in order to login")
+        }
         var password = document.getElementById("password").value;
         var data = {
             "email": email,
@@ -44,6 +48,9 @@ function MyLogin() {
     }
     function  handleSignUp(){
         var email = document.getElementById("email").value;
+        if(!validateEmail(email)){
+            return alert("please enter a correct email adress in order to create a new account")
+        }
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         var data = {
@@ -77,16 +84,24 @@ function MyLogin() {
           }).catch(err => {
             console.log(err);
         })
+
     }
 
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    }
     return (
         <div className='container'>
             <div className="login-container">
-                <h2>{isSignUp ? "Create new Account": "Login with username/email"}</h2>
+                <h2>{isSignUp ? "Create new account": "Login with email"}</h2>
                 <form >
                     {isSignUp && <input type="text" placeholder="username" id="username"></input> }
                     
-                    <input type="text" className="login-container-input"  placeholder="email" id="email" ></input>
+                    <input type="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" className="login-container-input"  placeholder="email" id="email" ></input>
                     <br/>
                     <input type="password" id="password" placeholder="password" ></input>
                     <br/>
