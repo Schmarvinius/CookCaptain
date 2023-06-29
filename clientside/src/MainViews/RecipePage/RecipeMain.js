@@ -65,7 +65,7 @@ const RecipeMain = ({onLikeRecipeChange , likeRecipeChanged}) => {
                 if (error.response && error.response.status === 404) {
                     setRecipes([]);
                   } else {
-                    console(error.message);
+                    
                   }
             }
           };
