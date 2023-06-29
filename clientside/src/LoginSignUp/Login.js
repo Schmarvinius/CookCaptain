@@ -10,7 +10,7 @@ function MyLogin() {
     const { setUser } = useContext(UserContext);
 
     function handleLogin(){
-        var email = document.getElementById("email").value;
+        var username = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var data = {
             "email": username,
