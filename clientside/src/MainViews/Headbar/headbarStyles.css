@@ -1,67 +1,63 @@
 .headbar-Container {
-    display: flex;
-    align-items: center;
- background-color: rgba(255, 255, 255, 0.7);    /* 128 */
-    height: 7%;
-    width: 100vw;
-    flex-wrap: nowrap;
-    justify-content: end;
-    
-  }
-  
-  .headbar-picture {
-    width: 100px;
-    height: auto;
-  }
-  
-  .Search-Container{
-    padding-left: 3%;
-    height: 7%;
-    padding-top: 20px;    
-    width: 63.5%;
-  }
-
-  .Search-Container input {
-    width: 100%;
-    max-width: 63.5%; 
-    border: 1px solid #ccc;
-    padding: 8px;
-    font-size: 16px;
-    background-color: rgba(128, 128, 128, 0.7);
-    color: rgb(0, 0, 0);
-
-  }
-  
-  .headbar-link-user {
-    text-decoration: none; 
-    display: flex;
-    align-items: center;
-    padding-left: 1%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .headbar-link {
-    text-decoration: none; 
-    display: flex;
-    align-items: center;
-    padding-left: 1%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: 8%;
-  }
-
-.navigation-container{
-    display: flex;
-    align-items: center;
-    padding-left: 1%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-grow: 3;
-    margin-right: 0px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7); /* 128 */
+  height: 7%;
+  width: 100vw;
+  flex-wrap: nowrap;
+  justify-content: end;
 }
-  
-  
+
+.headbar-picture {
+  width: 100px;
+  height: auto;
+}
+
+.Search-Container {
+  padding-left: 3%;
+  height: 7%;
+  padding-top: 20px;
+  width: 63.5%;
+}
+
+.Search-Container input {
+  width: 100%;
+  max-width: 63.5%;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 16px;
+  background-color: rgba(128, 128, 128, 0.7);
+  color: rgb(0, 0, 0);
+}
+
+.headbar-link-user {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-left: 1%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headbar-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-left: 1%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 8%;
+}
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+  padding-left: 1%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 3;
+  margin-right: 0px;
+}

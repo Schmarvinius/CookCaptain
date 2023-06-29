@@ -7,7 +7,7 @@ import Imprint from "./Imprint/Imprint";
 import Profile from "./Profile/ProfilePage";
 import Create from "./CreateRecipes/CreateRecipe";
 import { UserProvider } from "./Context/UserContext";
-import Recipe from "./DetailRecipeView/recipe.js"
+import Recipe from "./DetailRecipeView/recipe.js";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./RecipeMainStyle.css";
 import axios from "axios";
 import { SearchContext } from "../../Context/SearchContext";
@@ -25,7 +25,6 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
       console.log("hi");
     }
   }, [user, likeRecipeChanged]);
-  
 
   const handelLikeRecipe = async (recipe) => {
     if (user === null) {
@@ -89,59 +88,59 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
 
   return (
     <>
-    <div className='container-List'>
-      <div classname="listitem-recipe">
-        {recipes.length > 0 ? (
-          <ul className="list">
-            {recipes.map((recipe) => (
-              <li
-                className="listitem-recipe"
-                key={recipe._id}
-                onClick={() => handleClickRecipe(recipe._id)}
-              >
-                <div className="Container-List-Recipe">
-                  <button
-                    className="buttonForLike"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handelLikeRecipe(recipe);
-                    }}
-                  >
-                    <img
-                      className="like-icon"
-                      src={likedList.has(recipe._id) ? likeIcon : notLikeIcon}
-                      alt="Like Icon"
-                    />
-                  </button>
-                  <div className="image-wrapper">
-                    <img
-                      className="food-picture"
-                      src={foodIcon}
-                      alt="Food-Icon"
-                    />
-                  </div>
-                  <div className="name-container">
-                    <span className="name">{recipe.name}</span>
-                  </div>
-                  <div className="author-container">
-                    <span
-                      className="author truncate"
+      <div className="container-List">
+        <div classname="listitem-recipe">
+          {recipes.length > 0 ? (
+            <ul className="list">
+              {recipes.map((recipe) => (
+                <li
+                  className="listitem-recipe"
+                  key={recipe._id}
+                  onClick={() => handleClickRecipe(recipe._id)}
+                >
+                  <div className="Container-List-Recipe">
+                    <button
+                      className="buttonForLike"
                       onClick={(e) => {
                         e.stopPropagation();
-                        console.log(recipe.author);
+                        handelLikeRecipe(recipe);
                       }}
                     >
-                      Author: {recipe.author}
-                    </span>
+                      <img
+                        className="like-icon"
+                        src={likedList.has(recipe._id) ? likeIcon : notLikeIcon}
+                        alt="Like Icon"
+                      />
+                    </button>
+                    <div className="image-wrapper">
+                      <img
+                        className="food-picture"
+                        src={foodIcon}
+                        alt="Food-Icon"
+                      />
+                    </div>
+                    <div className="name-container">
+                      <span className="name">{recipe.name}</span>
+                    </div>
+                    <div className="author-container">
+                      <span
+                        className="author truncate"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          console.log(recipe.author);
+                        }}
+                      >
+                        Author: {recipe.author}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No recipes found.</p>
-        )}
-      </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No recipes found.</p>
+          )}
+        </div>
       </div>
     </>
   );

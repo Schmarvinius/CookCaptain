@@ -2,7 +2,6 @@
   list-style: none;
   background-color: white;
   max-width: 220px;
-
 }
 .Container-List-Recipe {
   max-height: 350px;
@@ -23,13 +22,13 @@
   height: 75vh;
   overflow: auto;
 }
-.listitem-recipe:hover{
+.listitem-recipe:hover {
   transform: scale(1.05);
   transition: 0.4s ease-in-out;
   animation: fadeOut 0.4s;
 }
 
-.author-container{
+.author-container {
   margin-top: 20px;
   text-align: left;
   max-width: 200px;
@@ -38,17 +37,16 @@
   white-space: nowrap;
 }
 
-.name-container{
+.name-container {
   margin-top: 3px;
   text-align: center;
-  
 }
 
-.name{
+.name {
   font-size: 14;
   font-weight: 500;
 }
-.author{
+.author {
   margin-top: 28px;
   width: 200px;
 }
@@ -58,8 +56,6 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
 }
-
-
 
 .image-wrapper {
   flex: 1;
