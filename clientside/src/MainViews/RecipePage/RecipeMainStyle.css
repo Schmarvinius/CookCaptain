@@ -4,22 +4,37 @@
   padding: 8px;
   margin-bottom: 8px;
   max-width: 220px;
+
+}
+.buttonForLike {
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  visibility: visible;
+}
+.like-icon {
+  width: 24px; /* Adjust the size of the like icon as needed */
+  height: 24px;
 }
 
 .container-List {
-  height: 600px;
+  height: 75vh;
   overflow: auto;
 }
 .listitem-recipe:hover{
   transform: scale(1.05);
   transition: 0.4s ease-in-out;
   animation: fadeOut 0.4s;
-  
 }
+
 .author-container{
   margin-top: 20px;
   text-align: left;
   max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .name-container{
@@ -27,6 +42,7 @@
   text-align: center;
   
 }
+
 .name{
   font-size: 14;
   font-weight: 500;
@@ -34,16 +50,11 @@
 .author{
   margin-top: 28px;
   width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
 }
-
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
 }
 
