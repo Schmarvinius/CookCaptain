@@ -28,18 +28,20 @@ const Recipe = () =>{
   }, [id]);
     return (
         <>
-          <div>
-          {recipe[0] ? (
-            //! Hier Code wenn Recipe geladen ist
+        <div className="container-for-layout">
+          <div className="layout">
+            {recipe[0] ? (
+              //! Hier Code wenn Recipe geladen ist
 
 
 
-            <h1>{recipe[0]._id}</h1>
-          ) : (
-            //! Hier Code wenn Recipe nicht geladen ist
-            <h1>No Recipe</h1>
-          )}
-          </div>  
+              <h1>{recipe[0]._id}</h1>
+            ) : (
+              //! Hier Code wenn Recipe nicht geladen ist
+              <h1>No Recipe</h1>
+            )}
+          </div> 
+        </div>
         </>
     )
 }
