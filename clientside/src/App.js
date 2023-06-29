@@ -7,6 +7,7 @@ import Imprint from "./Imprint/Imprint";
 import Profile from "./Profile/ProfilePage";
 import Create from "./CreateRecipes/CreateRecipe";
 import { UserProvider } from "./Context/UserContext";
+import RecipePage from "./DetailRecipeView/recipe.js"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/impressum" element={<Imprint />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/neu" element={<Create />} />
+          <Route path="/home/recipe/:id" component={RecipePage} />
         </Routes>
         <Lowbar />
       </UserProvider>
