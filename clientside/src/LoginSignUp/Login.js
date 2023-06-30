@@ -10,7 +10,7 @@ function MyLogin() {
     const { user, setUser } = useContext(UserContext);
 
 
-    function handleLogin(){
+    const handleLogin = () => {
         var email = document.getElementById("email").value;
         if(!validateEmail(email)){
             return alert("please enter a correct email adress in order to login")
@@ -27,7 +27,7 @@ function MyLogin() {
             },
             body: JSON.stringify(data)
         })
-        .then(function(response) {
+        .then((response) => {
             if (response.ok) {
     
               return response.json();
@@ -36,7 +36,7 @@ function MyLogin() {
               throw new Error('Login failed');
             }
           })
-          .then(function(userResponse) {
+          .then((userResponse) => {
             setUser(userResponse[0]); // Update the user state using setUser (async)
             
             
@@ -46,7 +46,7 @@ function MyLogin() {
         })
 
     }
-    function  handleSignUp(){
+    const  handleSignUp = () => {
         var email = document.getElementById("email").value;
         if(!validateEmail(email)){
             return alert("please enter a correct email adress in order to create a new account")
@@ -67,7 +67,7 @@ function MyLogin() {
             },
             body: JSON.stringify(data)
         })
-        .then(function(response) {
+        .then((response) => {
             if (response.ok) {
     
               return response.json();
@@ -76,7 +76,7 @@ function MyLogin() {
               throw new Error('SignUp failed');
             }
           })
-          .then(function(userResponse) {
+          .then((userResponse) => {
             setUser(userResponse[0]); // Update the user state using setUser (async)
             
             
