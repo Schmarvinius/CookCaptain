@@ -19,7 +19,7 @@
 }
 
 .container-List {
-  height: 75vh;
+  height: 70vh;
   overflow: auto;
 }
 .listitem-recipe:hover {
