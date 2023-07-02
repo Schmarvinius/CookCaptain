@@ -11,8 +11,8 @@ const verifyToken = require("../controllers/auth");
 
 const router = express.Router();
 router.post("/", addUser);
-router.get("/Id", verifyToken, getUserByID);
-router.get("/Email", verifyToken, getUserByEmail);
+router.get("/id", verifyToken, getUserByID);
+router.get("/email", verifyToken, getUserByEmail);
 router.delete("/", verifyToken, deleteUser);
 router.patch("/", verifyToken, updateUser);
 router.post("/login", login);
