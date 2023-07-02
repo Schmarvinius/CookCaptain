@@ -23,7 +23,7 @@ const Headbar = () => {
             placeholder="Search..."
             value={searchQuery}
             onChange={handleSearch}
-            class="searchbar"
+            className="searchbar"
           />
         </div>
         <Link to="../profile" className="headbar-link-user">
