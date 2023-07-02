@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
 
 export const TokenContext = createContext();
 
@@ -13,13 +12,21 @@ export const TokenProvider = ({ children }) => {
 
     if (storedToken) {
       // Decode the token to extract its information
-      const decodedToken = jwt_decode(storedToken);
-      setToken(decodedToken);
+      setToken(storedToken);
     }
   }, []);
 
   const updateToken = (newToken) => {
     setToken(newToken);
+
+    // Save the new token to local storage or session storage
+    if (newToken) {
+      localStorage.setItem("token", newToken);
+      sessionStorage.setItem("token", newToken);
+    } else {
+      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
+    }
   };
 
   const clearToken = () => {
