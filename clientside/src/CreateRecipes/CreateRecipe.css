@@ -1,35 +1,144 @@
 .neuContainer {
     background-color: rgba(255, 255, 255, 0.7);
-    height: 99vh;
+    height: auto;
+    max-height: 90vh;
     width: 70vw;
     position: absolute;
-    
+
+    display: flex;
+    flex-direction: column;
+
     left: 50%;
     transform: translateX(-50%);
     margin-top: 5px;
     padding: 5px;
     border-radius: 10px;
 }
+
 .form {
     display: flex;
     gap: 1%;
 }
+
+.idk {
+    display: flex;
+    flex-direction: column;
+}
 .Schritte {
     flex: 5;
     background-color: aliceblue;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .Zutaten {
     flex: 5;
     background-color: aliceblue;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Add {
+    align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 3%;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.Add:hover {
+    background-color: rgb(242, 242, 242);
+    transition: all 0.3s ease-in-out;
 }
 
 .entry {
     display: flex;
     padding: 1%;
+    padding-bottom: 3%;
     flex-direction: column;
 }
 
 .title {    
     padding-bottom: 1%;
+    display: flex;
+    gap: 1%;
+}
+
+.title > input {
+    flex: 50;
+}
+
+.title > input[type="button"] {
+    flex: 1;
+}
+
+.IngredientEntry {
+    display: flex;
+    gap: 1%;
+    padding: 1%;
+}
+
+.IngredientEntry > .IN {
+    flex: 5;
+}
+
+.IngredientEntry > .Amount {
+    flex: 4;
+}
+
+h2 {
+    padding-left: 1%;
+}
+
+.RecipeName {
+    width: 80%;
+    justify-self: center;
+    margin-bottom: 1%;
+}
+
+/* Styling All types of Inputs that are not button like */
+.neuContainer textarea,.neuContainer input[type]:not([type='button'],[type='submit']) {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    resize: vertical;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+
+.head {
+    display: grid;
+    gap: 5%;
+    margin-bottom: 1%;
+}
+
+.head > * {
+    font-size: large;
+}
+
+.head > textarea {
+    resize: none;
+    height: 5vh;
 }
