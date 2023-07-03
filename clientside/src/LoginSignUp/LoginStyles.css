@@ -73,4 +73,52 @@ body {
     width: auto;
     font-size: 18px;
   }
+  /* .message-container {
+    display: 'flex';
+        justifyContent: 'center';
+        position: 'fixed';
+        top: 0;
+        left: 0;
+        right: 0;
+        height: '100vh';
+        backgroundColor: 'rgba(0, 128, 0, 0.8)';
+        color: 'white';
+        alignItems: 'center';
+        textAlign: 'center';
+        fontSize: '18px';
+  } */
+  /* .message-container {
+    position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  color: green;
+  padding: 10px;
+  text-align: center;
+  } */
+  .message-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    color: green;
+    padding: 10px;
+    text-align: center;
+    animation: fadeOut 5s ease-out forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
   

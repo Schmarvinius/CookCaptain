@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './LoginStyles.css';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../Context/UserContext';
@@ -7,8 +7,22 @@ import { UserContext } from '../Context/UserContext';
 function MyLogin() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
+    const [showMessage, setShowMessage] = useState();
     const { user, setUser } = useContext(UserContext);
 
+    //message should disappear after 10 seconds
+    // const SuccessMessage = () => {
+    //     useEffect(() => {
+    //         setShowMessage(true);
+    
+    //         const timer = setTimeout(() => {
+    //             setShowMessage(false);
+    //         }, 10000);
+    
+    //         return() => clearTimeout(timer);
+    //      }, []);
+
+    // }
 
     const handleLogin = () => {
         var email = document.getElementById("email").value;
@@ -79,12 +93,18 @@ function MyLogin() {
           .then((userResponse) => {
             setUser(userResponse[0]); // Update the user state using setUser (async)
             
-            
-            navigate('/home');
+            document.getElementById("username").value = '';
+            document.getElementById("password").value = '';
+            setIsSignUp(prevValue => !prevValue);
+            setShowMessage(prevValue => !prevValue);
+            setTimeout(() => {
+            setShowMessage(false);
+            }, 5000);
+
           }).catch(err => {
             console.log(err);
         })
-
+        
     }
 
     const validateEmail = (email) => {
@@ -96,9 +116,14 @@ function MyLogin() {
     }
     return (
         <div className='container'>
+            { showMessage && 
+                <div className="message-container">
+                    Congratulations! You have been successfully registered. You can now login!
+                </div>
+            }
             <div className="login-container">
                 <h2>{isSignUp ? "Create new account": "Login with email"}</h2>
-                <form >
+                <form id="inputForm" >
                     {isSignUp && <input type="text" placeholder="username" id="username"></input> }
                     
                     <input type="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" className="login-container-input"  placeholder="email" id="email" ></input>
