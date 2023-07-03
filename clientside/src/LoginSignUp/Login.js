@@ -1,28 +1,33 @@
-import React, { useState, useContext, useEffect } from 'react';
-import './LoginStyles.css';
+import React, { useState, useContext, useEffect } from "react";
+import "./LoginStyles.css";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from '../Context/UserContext';
-
+import { UserContext } from "../Context/UserContext";
+import { TokenContext } from "../Context/TokenContext";
+import axios from "axios";
 
 function MyLogin() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const [showMessage, setShowMessage] = useState();
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
+    const { token, setToken } = useContext(TokenContext);
 
-    //message should disappear after 10 seconds
-    // const SuccessMessage = () => {
-    //     useEffect(() => {
-    //         setShowMessage(true);
+    useEffect(() => {
+        const fetchData = async () => {
+          if (token) {
+            try {
+              axios.defaults.headers.common["Authorization"] = token;
+              const response = await axios.get(`http://localhost:3000/user/email`);
+              setUser(response.data);
+              navigate("/home");
+            } catch (error) {
+              console.error("Error fetching user email:", error);
+            }
+          }
+        };
     
-    //         const timer = setTimeout(() => {
-    //             setShowMessage(false);
-    //         }, 10000);
-    
-    //         return() => clearTimeout(timer);
-    //      }, []);
-
-    // }
+        fetchData();
+      }, [token]);
 
     const handleLogin = () => {
         var email = document.getElementById("email").value;
@@ -51,6 +56,7 @@ function MyLogin() {
             }
           })
           .then((userResponse) => {
+            setToken(userResponse.token); // Update the token state using setToken (async)
             setUser(userResponse[0]); // Update the user state using setUser (async)
             
             
@@ -71,8 +77,6 @@ function MyLogin() {
             "name": username,
             "email": email,
             "password": password,
-            "likedRecipes": [],
-            "createdRecipes": []
         };
         fetch('http://localhost:3000/user/', {
             method: 'POST',
@@ -140,6 +144,5 @@ function MyLogin() {
         </div>
     );
 }
-
 
 export default MyLogin;

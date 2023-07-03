@@ -15,7 +15,6 @@ const login = (req, res) => {
     .find({ email: rEmail })
     .then(async (fetchedUser) => {
       if (!fetchedUser[0].email) {
-        jwt.sign({ name: fetchedUser.name }, { email: fetchedUser.email });
         return res.status(400).send(`${rEmail} doesn't exist`);
       }
 
@@ -23,8 +22,20 @@ const login = (req, res) => {
         rPassword,
         fetchedUser[0].password
       );
+
+      const email = req.body.email;
       if (isPasswordCorrect) {
-        return res.status(200).json(fetchedUser);
+        // Generate JWT token
+        const fetchedToken = jwt.sign(
+          { user_id: fetchedUser[0]._id, email },
+          "187",
+          {
+            expiresIn: "2h",
+          }
+        );
+
+        // Return the token and user data in the response
+        res.status(200).json({ user: fetchedUser[0], token: fetchedToken });
       } else {
         return res.status(400).send(`Password for ${rEmail} don't match.`);
       }
