@@ -12,14 +12,14 @@ const LinkedView = ({ onLikeRecipeChange, likeRecipeChanged }) => {
   const { user, setUser } = useContext(UserContext);
 
   const handelLikeRecipe = async (recipe) => {
-    if (user === null) {
+    if (user === null || user === undefined) {
       // Handle the case when the user object is null
       return;
     }
     let data = {};
     try {
       data = { ...user, recipeId: recipe._id };
-      await axios.delete("http://localhost:3000/api/Recipe/like", { data });
+      await axios.delete("http://localhost:3000/recipe/like", { data });
       console.log("Like deleted successfully");
     } catch (err) {
       console.error("Failed to delete like:", err);
@@ -39,7 +39,7 @@ const LinkedView = ({ onLikeRecipeChange, likeRecipeChanged }) => {
   useEffect(() => {
     let likedList = []; // Declare the likedList variable
 
-    if (user !== null) {
+    if (user !== null || user === undefined) {
       likedList = user.likedRecipes;
       console.log(likedList);
     }
@@ -51,7 +51,7 @@ const LinkedView = ({ onLikeRecipeChange, likeRecipeChanged }) => {
 
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/Recipe/Id",
+          "http://localhost:3000/recipe/id",
           data
         );
         setRecipes(response.data);

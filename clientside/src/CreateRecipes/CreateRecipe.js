@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../src/Context/UserContext";
 import "./CreateRecipe.css";
+import { TokenContext } from "../Context/TokenContext";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
   const [StepGroup, setInputGroups] = useState([]);
   const [IngredientGroup, setIngredientGroup] = useState([]);
+
+  const { user } = useContext(UserContext);
+  const { token } = useContext(TokenContext);
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDescChange = (event) => {
+    setDesc(event.target.value);
+  };
 
   const handleStepAddInput = () => {
     setInputGroups([...StepGroup, { id: Date.now() }]);
@@ -40,16 +57,58 @@ const ProfilePage = () => {
       amount: event.target[`Amount-${group.id}`].value,
     }));
 
+    const data = {
+      name: title,
+      description: desc,
+      ingredients: ingredientData,
+      steps: stepData,
+      author: user.email,
+    };
+
     // Perform your request with the data array
     console.log(stepData);
     console.log(ingredientData);
+
+    fetch("http://localhost:3000/recipe/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        navigate("/profile");
+      })
+      .catch((error) => {
+        console.error("Error", error);
+      });
   };
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/home");
+    }
+  });
 
   return (
     <div className="neuContainer">
       <h1>Neues Rezept</h1>
-      <form onSubmit={handleFormSubmit}>
-        <input placeholder="Titel"></input>
+      <form onSubmit={handleFormSubmit} className="idk">
+        <div className="head">
+          <input
+            type="text"
+            placeholder="Titel"
+            value={title}
+            onChange={handleTitleChange}
+          ></input>
+          <textarea
+            placeholder="Beschreibung"
+            value={desc}
+            onChange={handleDescChange}
+          ></textarea>
+        </div>
         <div className="form">
           <div className="Schritte">
             <h2>Schritte</h2>
@@ -59,62 +118,65 @@ const ProfilePage = () => {
                   <input
                     type="text"
                     name={`IT-${group.id}`}
-                    placeholder="Instruction Title"
+                    placeholder="Titel"
                     required
                   />
-                  <button
+                  <input
                     type="button"
                     onClick={() => handleStepRemoveInput(group.id)}
-                  >
-                    -
-                  </button>
+                    value={"-"}
+                  />
                 </div>
                 <textarea
                   type="text"
                   name={`Instruction-${group.id}`}
-                  placeholder="Instruction"
+                  placeholder="Beschreibung"
                   required
                 />
               </div>
             ))}
-            <button type="button" onClick={handleStepAddInput}>
-              Add Input
-            </button>
+            <input
+              className="Add"
+              type="button"
+              onClick={handleStepAddInput}
+              value={"Add Input"}
+            />
             {/* Dynamisch erzeugen lassen */}
           </div>
           <div className="Zutaten">
             <h2>Zutaten</h2>
             {IngredientGroup.map((group) => (
-              <div key={group.id} className="entry">
+              <div key={group.id} className="IngredientEntry">
                 <input
-                  className="IT"
+                  className="IN"
                   type="text"
                   name={`Name-${group.id}`}
-                  placeholder="Ingredient Name"
+                  placeholder="Name"
                   required
                 />
                 <input
-                  className="Instruction"
+                  className="Amount"
                   type="text"
                   name={`Amount-${group.id}`}
-                  placeholder="Amount"
+                  placeholder="Menge"
                   required
                 />
-                <button
+                <input
                   type="button"
                   onClick={() => handleIngredientRemoveInput(group.id)}
-                >
-                  -
-                </button>
+                  value={"-"}
+                />
               </div>
             ))}
-            <button type="button" onClick={handleIngredientAddInput}>
-              Add Input
-            </button>
-            {/* Dynamisch erzeugen lassen */}
+            <input
+              type="button"
+              className="Add"
+              onClick={handleIngredientAddInput}
+              value={"Add Input"}
+            />
           </div>
         </div>
-        <input type="submit"></input>
+        <input type="submit" className="Add"></input>
       </form>
     </div>
   );

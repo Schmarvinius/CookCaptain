@@ -20,14 +20,14 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
   };
 
   useEffect(() => {
-    if (user !== null) {
+    if (user !== null || user === undefined) {
       setLikedList(new Set(user.likedRecipes));
       console.log("hi");
     }
   }, [user, likeRecipeChanged]);
 
   const handelLikeRecipe = async (recipe) => {
-    if (user === null) {
+    if (user === null || user === undefined) {
       // Handle the case when the user object is null
       return;
     }
@@ -39,7 +39,7 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
 
       try {
         data = { ...user, recipeId: recipe._id };
-        await axios.delete("http://localhost:3000/api/Recipe/like", { data });
+        await axios.delete("http://localhost:3000/recipe/like", { data });
         console.log("Like deleted successfully");
       } catch (err) {
         console.error("Failed to delete like:", err);
@@ -50,7 +50,7 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
 
       try {
         data = { ...user, recipeId: recipe._id };
-        await axios.patch("http://localhost:3000/api/Recipe/like", data);
+        await axios.patch("http://localhost:3000/recipe/like", data);
         console.log("Like added successfully");
       } catch (err) {
         console.error("Failed to add like:", err);
@@ -67,13 +67,11 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
       try {
         if (searchQuery) {
           const response = await axios.get(
-            `http://localhost:3000/api/Recipe/Name?name=${searchQuery}`
+            `http://localhost:3000/recipe/name?name=${searchQuery}`
           );
           setRecipes(response.data);
         } else {
-          const response = await axios.get(
-            `http://localhost:3000/api/Recipe/pre`
-          );
+          const response = await axios.get(`http://localhost:3000/recipe/pre`);
           setRecipes(response.data);
         }
       } catch (error) {

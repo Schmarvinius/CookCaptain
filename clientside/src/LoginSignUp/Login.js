@@ -1,12 +1,32 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./LoginStyles.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+import { TokenContext } from "../Context/TokenContext";
+import axios from "axios";
 
 function MyLogin() {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const { setUser } = useContext(UserContext);
+  const { token, setToken } = useContext(TokenContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (token) {
+        try {
+          axios.defaults.headers.common["Authorization"] = token;
+          const response = await axios.get(`http://localhost:3000/user/email`);
+          setUser(response.data);
+          navigate("/home");
+        } catch (error) {
+          console.error("Error fetching user email:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [token]);
 
   function handleLogin() {
     var username = document.getElementById("username").value;
@@ -30,7 +50,9 @@ function MyLogin() {
         }
       })
       .then(function (userResponse) {
-        setUser(userResponse[0]); // Update the user state using setUser (async)
+        console.log(userResponse);
+        setToken(userResponse.token); // Update the token state using setToken (async)
+        setUser(userResponse.user); // Update the user state using setUser (async)
 
         navigate("/home");
       })
