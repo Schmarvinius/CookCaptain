@@ -2,6 +2,7 @@ const {sRecipe} = require('../../model/recipe-model.js');
 const {errorHandler} = require('../errorHandler');
 
 const deleteRecipe = (req,res) =>{
+    console.log(req.body)
     recipeID = req.body.recipeID
     console.log(recipeID);
     sRecipe.findByIdAndRemove(recipeID)
