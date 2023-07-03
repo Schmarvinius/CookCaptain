@@ -1,32 +1,32 @@
 import React, { useState, useContext, useEffect } from "react";
-import "./recipeStyle.css"
+import "./recipeStyle.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-const Recipe = () =>{
+const Recipe = () => {
   const { id } = useParams();
   const [recipe, setRecipes] = useState([]);
   const navigate = useNavigate();
 
-  useEffect( () => {
-
+  useEffect(() => {
     const fetchRecipe = async () => {
-      try{
-        const data = {_ids : [id]}
+      try {
+        const data = { _ids: [id] };
         const response = await axios.post(
-          `http://localhost:3000/api/Recipe/Id`,data);
+          `http://localhost:3000/recipe/id`,
+          data
+        );
         setRecipes(response.data);
         console.log(response.data);
-      } catch (err){
+      } catch (err) {
         setRecipes([]);
-        console.log(err)
+        console.log(err);
       }
-      
-    }
+    };
     fetchRecipe();
-    console.log('Recipe ID:', id);
+    console.log("Recipe ID:", id);
   }, [id]);
   
   const handleClick = () => {
@@ -78,7 +78,8 @@ const Recipe = () =>{
             )}
           </div> 
         </div>
-        </>
-    )
-}
+      
+    </>
+  );
+};
 export default Recipe;

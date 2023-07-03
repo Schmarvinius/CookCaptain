@@ -20,7 +20,8 @@
 .main2 {
     flex: 3;
     margin: 5px;
-    height: calc(90vh - 10px);
+    height: auto;
+    max-height: calc(90vh - 10px);
     display: flex;
     flex-direction: column;
 }
@@ -35,52 +36,69 @@
     margin: 5px;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.7);
+    max-height: calc(90vh - 10px);
     overflow: scroll;
     min-width: 45%;
     border-radius: 10px;
+    border: 1px solid black;
 }
 
 .likedRecipes {
     margin: 5px;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.7);
+    max-height: calc(90vh - 10px);
     overflow: scroll;
     min-width: 45%;
     border-radius: 10px;
+    border: 1px solid black;
+}
+
+.createdRecipes > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
 }
 
 .submitButton { /* positioning */
     flex: 1;
     position: relative;
+    top: 5%;
     left: 50%;
-    top: 50%;
     width: 50vw;
     height: 5vh;
     transform: translate(-50%,-50%);
+    margin-bottom: 100px;
+    
 }
 
 .submitButton {
-  align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 0;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  vertical-align: baseline;
-  width: auto;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    vertical-align: baseline;
+    width: auto;
+}
+
+.submitButton:hover {
+    background-color: rgb(242, 242, 242);
+    transition: all 0.3s ease-in-out;
 }
 
 .profilePic {
@@ -96,6 +114,10 @@
     display: block;
 }
 
-.reset {
 
+.flex {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 10%;
 }
