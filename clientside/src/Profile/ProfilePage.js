@@ -8,17 +8,25 @@ import { TokenContext } from "../../src/Context/TokenContext";
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import deleteIcon from "../images/delete.png"
+import ConfirmationDialog from "../Modells/ConfirmationDialog";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
 
   const [likedRecipes, setLikedRecipes] = useState([]);
   const [createdRecipes, setCreatedRecipes] = useState([]);
+  const [reload, setreload] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const { user } = useContext(UserContext);
   const { token, clearToken } = useContext(TokenContext);
+  const [recipe, setRecipe] = useState(null);
+
+
 
   useEffect(() => {
+    setIsConfirmationOpen(false)
     const fetchLikedRecipes = async () => {
       try {
         const response = await axios.get("http://localhost:3000/recipe/likes", {
@@ -56,14 +64,45 @@ const ProfilePage = () => {
     } else {
       navigate("/home");
     }
-  }, []);
+  }, [reload]);
 
   const signOut = () => {
     clearToken();
     navigate("/");
   };
 
+  const handleCancel = () => {
+    setIsConfirmationOpen(false); 
+  };
+
+  const handelDeleteRecipe = recipe => {
+    setRecipe(recipe);
+    setIsConfirmationOpen(true);
+  };
+
+  const deleteRecipe = async () => {
+    console.log(recipe)
+    let data = {};
+    try {
+      data = { recipeID: recipe._id };
+      const config = {
+        data: data,
+      };
+      await axios.delete("http://localhost:3000/recipe", config);
+      setreload((prevState) => !prevState);
+    } catch (e){
+      console.error("Failed to delete recipe:", e);
+    }
+    
+  }
+
   return (
+    <>
+    <ConfirmationDialog
+    isOpen={isConfirmationOpen}
+    onConfirm={deleteRecipe} 
+    onCancel={handleCancel}
+    />
     <div className="siteContainer">
       <div className="profileData">
         <h1>Über mich</h1>
@@ -104,6 +143,19 @@ const ProfilePage = () => {
                 <ul className="list">
                   {createdRecipes.map((recipe) => (
                     <li className="listitem-recipe" key={recipe._id}>
+                      <button
+                      className="buttonForLike"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handelDeleteRecipe(recipe);
+                      }}
+                    >
+                      <img
+                        className="like-icon"
+                        src= {deleteIcon}
+                        alt="Like Icon"
+                      />
+                    </button>
                       <div className="image-wrapper">
                         <img
                           className="food-picture"
@@ -173,6 +225,7 @@ const ProfilePage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
