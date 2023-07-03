@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../src/Context/UserContext";
 import "./CreateRecipe.css";
 import { TokenContext } from "../Context/TokenContext";
@@ -85,6 +85,12 @@ const ProfilePage = () => {
         console.error("Error", error);
       });
   };
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/home");
+    }
+  });
 
   return (
     <div className="neuContainer">

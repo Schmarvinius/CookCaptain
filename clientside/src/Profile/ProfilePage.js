@@ -50,8 +50,12 @@ const ProfilePage = () => {
       }
     };
 
-    fetchCreatedRecipes();
-    fetchLikedRecipes();
+    if (user) {
+      fetchCreatedRecipes();
+      fetchLikedRecipes();
+    } else {
+      navigate("/home");
+    }
   }, []);
 
   const signOut = () => {
@@ -123,7 +127,16 @@ const ProfilePage = () => {
                 {/* Display a list of all created recipes */}
               </div>
             ) : (
-              <ClipLoader color="#000000" loading={true} size={30} />
+              <div className="flex">
+                <ClipLoader color="#000000" loading={true} size={30} />
+                <Link to="../neu">
+                  <input
+                    type="submit"
+                    className="submitButton"
+                    value={"Neues Rezept Erstellen"}
+                  ></input>
+                </Link>
+              </div>
             )}
           </div>
           <div className="likedRecipes">

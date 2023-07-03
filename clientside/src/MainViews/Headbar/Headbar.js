@@ -26,7 +26,8 @@ const Headbar = () => {
             className="searchbar"
           />
         </div>
-        <Link to="../profile" className="headbar-link-user">
+
+        <Link to={user ? "../profile" : "../"} className="headbar-link-user">
           <div className="headbar-text">
             {user && user.name ? (
               <span>{user.name}</span>
