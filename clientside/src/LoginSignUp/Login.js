@@ -93,7 +93,6 @@ function MyLogin() {
             }
           })
           .then((userResponse) => {
-            setUser(userResponse[0]); // Update the user state using setUser (async)
             
             document.getElementById("username").value = '';
             document.getElementById("password").value = '';
