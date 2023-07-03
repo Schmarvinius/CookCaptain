@@ -14,12 +14,14 @@ function MyLogin() {
   useEffect(() => {
     const fetchData = async () => {
       if (token) {
-        axios.defaults.headers.common["Authorization"] = token;
-        const { data: response } = await axios.get(
-          `http://localhost:3000/user/email`
-        );
-        setUser(response);
-        navigate("/home");
+        try {
+          axios.defaults.headers.common["Authorization"] = token;
+          const response = await axios.get(`http://localhost:3000/user/email`);
+          setUser(response.data);
+          navigate("/home");
+        } catch (error) {
+          console.error("Error fetching user email:", error);
+        }
       }
     };
 

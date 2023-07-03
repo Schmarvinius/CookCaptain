@@ -30,8 +30,8 @@ const getUserByEmail = (req, res) => {
   sUser
     .find({ email: userEmail })
     .then((fetchedUser) => {
-      if (fetchedUser) {
-        return res.status(200).json(fetchedUser);
+      if (fetchedUser[0]) {
+        return res.status(200).json(fetchedUser[0]);
       } else {
         return res
           .status(404)
