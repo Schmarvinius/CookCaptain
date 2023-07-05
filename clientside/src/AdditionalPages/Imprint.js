@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import "./ImprintStyle.css";
+import "./AddPagesStyle.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 
-function Imprint() {
+const Imprint = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const handleBackClick = () => {
@@ -22,7 +22,7 @@ function Imprint() {
               <div className="fancy">Cook Captain</div>
             </button>
           </div>
-          <div className="imprintBody">
+          <div className="pageBody">
             <div className="impressum-content">
               <p>
                 <b>Verantwortlich für den Inhalt dieser Website gemäß §5 TMG:</b>
