@@ -59,13 +59,6 @@ body {
     box-sizing: border-box;
     font-size: 18px;
   }
-  /* .login-container p{
-    color: blue;
-    border: none;
-    background-color: transparent;
-    text-decoration: underline;
-    font-size: 18px;
-  } */
   .login-container [id="switchSignUp"]{
     color: blue;
     background-color: transparent;
@@ -84,7 +77,6 @@ body {
     text-align: center;
     animation: fadeOut 5s ease-out forwards;
   }
-  
   @keyframes fadeOut {
     0% {
       opacity: 1;
