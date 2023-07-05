@@ -59,7 +59,7 @@ body {
     box-sizing: border-box;
     font-size: 18px;
   }
-  .login-container [id="switchSignUp"]{
+  .login-container [id="switchSignUp"], [id="guestButton"]{
     color: blue;
     background-color: transparent;
     border:none;

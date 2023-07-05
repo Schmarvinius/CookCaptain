@@ -12,6 +12,8 @@ import Create from "./CreateRecipes/CreateRecipe";
 import { UserProvider } from "./Context/UserContext";
 import { TokenProvider } from "./Context/TokenContext";
 import Recipe from "./DetailRecipeView/recipe.js";
+import Welcome from "./WelcomePage/Welcome";
+
 
 const App = () => {
   return (
@@ -22,7 +24,8 @@ const App = () => {
       <TokenProvider>
         <UserProvider>
           <Routes>
-            <Route path="/" element={<MyLogin />} />
+            <Route path="/" element={<Welcome/>} />
+            <Route path="/login" element={<MyLogin />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/impressum" element={<Imprint />} />
             <Route path="/support" element={<Support />} />
