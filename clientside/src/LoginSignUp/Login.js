@@ -117,7 +117,7 @@ function MyLogin() {
     <div className='container'>
             { showMessage && 
                 <div className="message-container">
-                    Congratulations! You have been successfully registered. You can now login!
+                    You have been successfully registered. You can now login!
                 </div>
             }
             <div className="login-container">

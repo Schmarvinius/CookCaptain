@@ -12,10 +12,10 @@ function LowBar () {
         navigate("/support");
     }
     const handleFAQsClick = () => {
-        navigate("/FAQ");
+        navigate("/faq");
     }
     const handleAGBClick = () => {
-        navigate("/AGB");
+        navigate("/agb");
     }
     return(      
     <div className='ImprintContainer'>
