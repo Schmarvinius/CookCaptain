@@ -70,7 +70,7 @@ const ProfilePage = () => {
 
   const signOut = () => {
     clearToken();
-    navigate("/");
+    navigate("/login");
   };
 
   const handleCancel = () => {
