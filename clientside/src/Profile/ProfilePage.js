@@ -8,21 +8,27 @@ import { TokenContext } from "../../src/Context/TokenContext";
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import deleteIcon from "../images/delete.png";
+import ConfirmationDialog from "../Modells/ConfirmationDialog";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
 
   const [likedRecipes, setLikedRecipes] = useState([]);
   const [createdRecipes, setCreatedRecipes] = useState([]);
+  const [reload, setreload] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const { user } = useContext(UserContext);
   const { token, clearToken } = useContext(TokenContext);
+  const [recipe, setRecipe] = useState(null);
 
   const handleClickRecipe = (recipeId) => {
     navigate(`../home/recipe/${recipeId}`);
   };
 
   useEffect(() => {
+    setIsConfirmationOpen(false);
     const fetchLikedRecipes = async () => {
       try {
         const response = await axios.get("http://localhost:3000/recipe/likes", {
@@ -60,131 +66,179 @@ const ProfilePage = () => {
     } else {
       navigate("/home");
     }
-  }, []);
+  }, [reload]);
 
   const signOut = () => {
     clearToken();
     navigate("/");
   };
 
+  const handleCancel = () => {
+    setIsConfirmationOpen(false);
+  };
+
+  const handelDeleteRecipe = (recipe) => {
+    setRecipe(recipe);
+    setIsConfirmationOpen(true);
+  };
+
+  const deleteRecipe = async () => {
+    console.log(recipe);
+    let data = {};
+    try {
+      data = { recipeID: recipe._id };
+      const config = {
+        data: data,
+      };
+      await axios.delete("http://localhost:3000/recipe", config);
+      setreload((prevState) => !prevState);
+    } catch (e) {
+      console.error("Failed to delete recipe:", e);
+    }
+  };
+
   return (
-    <div className="siteContainer">
-      <div className="profileData">
-        <h1>Über mich</h1>
-        {user ? (
-          <div>
-            <img src={doner} alt="profilePicture" className="profilePic"></img>
-            <div className="userData">
-              <span>
-                <label>Name:</label>
-                <label className="data">{user.name}</label>
-              </span>
-              <span>
-                <label>E-Mail:</label>
-                <label className="data">{user.email}</label>
-              </span>
-              {/* <form method="get" action="localhost:3000/redirect/password">
+    <>
+      <ConfirmationDialog
+        isOpen={isConfirmationOpen}
+        onConfirm={deleteRecipe}
+        onCancel={handleCancel}
+      />
+      <div className="siteContainer">
+        <div className="profileData">
+          <h1>Über mich</h1>
+          {user ? (
+            <div>
+              <img
+                src={doner}
+                alt="profilePicture"
+                className="profilePic"
+              ></img>
+              <div className="userData">
+                <span>
+                  <label>Name:</label>
+                  <label className="data">{user.name}</label>
+                </span>
+                <span>
+                  <label>E-Mail:</label>
+                  <label className="data">{user.email}</label>
+                </span>
+                {/* <form method="get" action="localhost:3000/redirect/password">
               <a href="localhost:3001">reset password</a>
             </form> */}
-              <input
-                type="button"
-                className="submitButton"
-                value={"Sign Out"}
-                onClick={signOut}
-              ></input>
+                <input
+                  type="button"
+                  className="submitButton"
+                  value={"Sign Out"}
+                  onClick={signOut}
+                ></input>
+              </div>
             </div>
-          </div>
-        ) : (
-          <h1>User couldn't be fetched</h1>
-        )}
-      </div>
+          ) : (
+            <h1>User couldn't be fetched</h1>
+          )}
+        </div>
 
-      <div className="main2">
-        <div className="recipes">
-          <div className="createdRecipes">
-            <h1>Erstellte Rezepte</h1>
-            {createdRecipes.length > 0 ? (
-              <div>
-                <ul className="list">
-                  {createdRecipes.map((recipe) => (
-                    <li
-                      className="listitem-recipe"
-                      key={recipe._id}
-                      onClick={() => handleClickRecipe(recipe._id)}
-                    >
-                      <div className="image-wrapper">
-                        <img
-                          className="food-picture"
-                          src={userIcon}
-                          alt="Food-Icon"
-                        />
-                      </div>
-                      <div className="name-container">
-                        <span className="name">{recipe.name}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                <Link to="../neu">
-                  <input
-                    type="submit"
-                    className="submitButton"
-                    value={"Neues Rezept Erstellen"}
-                  ></input>
-                </Link>
-                {/* Display a list of all created recipes */}
-              </div>
-            ) : (
-              <div className="flex">
-                <ClipLoader color="#000000" loading={true} size={30} />
-                <Link to="../neu">
-                  <input
-                    type="submit"
-                    className="submitButton"
-                    value={"Neues Rezept Erstellen"}
-                  ></input>
-                </Link>
-              </div>
-            )}
-          </div>
-          <div className="likedRecipes">
-            <h1>Favorisierte Rezepte</h1>
-            {likedRecipes.length > 0 ? (
-              <div>
-                <ul className="list">
-                  {likedRecipes.map((recipe) => (
-                    <li
-                      className="listitem-recipe"
-                      key={recipe._id}
-                      onClick={() => handleClickRecipe(recipe._id)}
-                    >
-                      <div className="image-wrapper">
-                        <img
-                          className="food-picture"
-                          src={userIcon}
-                          alt="Food-Icon"
-                        />
-                      </div>
-                      <div className="name-container">
-                        <span className="name">{recipe.name}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                {/* Display a list of all liked recipes */}
-              </div>
-            ) : (
-              <ClipLoader
-                color="#000000"
-                loading={true}
-                size={30}
-                className="spinner"
-              />
-            )}
+        <div className="main2">
+          <div className="recipes">
+            <div className="createdRecipes">
+              <h1>Erstellte Rezepte</h1>
+              {createdRecipes.length > 0 ? (
+                <div>
+                  <ul className="list">
+                    {createdRecipes.map((recipe) => (
+                      <li
+                        className="listitem-recipe"
+                        key={recipe._id}
+                        onClick={() => handleClickRecipe(recipe._id)}
+                      >
+                        <button
+                          className="buttonForLike"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handelDeleteRecipe(recipe);
+                          }}
+                        >
+                          <img
+                            className="like-icon"
+                            src={deleteIcon}
+                            alt="Like Icon"
+                          />
+                        </button>
+                        <div className="image-wrapper">
+                          <img
+                            className="food-picture"
+                            src={userIcon}
+                            alt="Food-Icon"
+                          />
+                        </div>
+                        <div className="name-container">
+                          <span className="name">{recipe.name}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="../neu">
+                    <input
+                      type="submit"
+                      className="submitButton"
+                      value={"Neues Rezept Erstellen"}
+                    ></input>
+                  </Link>
+                  {/* Display a list of all created recipes */}
+                </div>
+              ) : (
+                <div className="flex">
+                  <ClipLoader color="#000000" loading={true} size={30} />
+                  <Link to="../neu">
+                    <input
+                      type="submit"
+                      className="submitButton"
+                      value={"Neues Rezept Erstellen"}
+                    ></input>
+                  </Link>
+                </div>
+              )}
+            </div>
+            <div className="likedRecipes">
+              <h1>Favorisierte Rezepte</h1>
+              {likedRecipes.length > 0 ? (
+                <div>
+                  <ul className="list">
+                    {likedRecipes.map((recipe) => (
+                      <li
+                        className="listitem-recipe"
+                        key={recipe._id}
+                        onClick={() => handleClickRecipe(recipe._id)}
+                      >
+                        <div className="image-wrapper">
+                          <img
+                            className="food-picture"
+                            src={userIcon}
+                            alt="Food-Icon"
+                          />
+                        </div>
+                        <div className="name-container">
+                          <span className="name">{recipe.name}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  {/* Display a list of all liked recipes */}
+                </div>
+              ) : (
+                <ClipLoader
+                  color="#000000"
+                  loading={true}
+                  size={30}
+                  className="spinner"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

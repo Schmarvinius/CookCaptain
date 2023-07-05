@@ -10,6 +10,7 @@ function MyLogin() {
   const [isSignUp, setIsSignUp] = useState(false);
   const { setUser } = useContext(UserContext);
   const { token, setToken } = useContext(TokenContext);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,11 +29,14 @@ function MyLogin() {
     fetchData();
   }, [token]);
 
-  function handleLogin() {
-    var username = document.getElementById("username").value;
+  const handleLogin = () => {
+    var email = document.getElementById("email").value;
+    if(!validateEmail(email)){
+        return alert("please enter a correct email adress in order to login")
+    }
     var password = document.getElementById("password").value;
     var data = {
-      email: username,
+      email: email,
       password: password,
     };
     fetch("http://localhost:3000/user/login", {
@@ -60,44 +64,79 @@ function MyLogin() {
         console.log(err);
       });
   }
-  function handleSignUp() {
-    alert("signup");
+  const handleSignUp = () => {
+    var email = document.getElementById("email").value;
+        if(!validateEmail(email)){
+            return alert("please enter a correct email adress in order to create a new account")
+        }
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var data = {
+            "name": username,
+            "email": email,
+            "password": password,
+        };
+        fetch('http://localhost:3000/user/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then((response) => {
+            if (response.ok) {
+    
+              return response.json();
+              
+            } else {
+              throw new Error('SignUp failed');
+            }
+          })
+          .then((userResponse) => {
+            
+            document.getElementById("username").value = '';
+            document.getElementById("password").value = '';
+            setIsSignUp(prevValue => !prevValue);
+            setShowMessage(prevValue => !prevValue);
+            setTimeout(() => {
+            setShowMessage(false);
+            }, 5000);
+
+          }).catch(err => {
+            console.log(err);
+        })
   }
-
+  const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+    }
   return (
-    <div className="container">
-      <div className="login-container">
-        <h2>{isSignUp ? "Create new Account" : "Login with username/email"}</h2>
-        <form>
-          {isSignUp && (
-            <input type="text" placeholder="email" id="email"></input>
-          )}
-
-          <input
-            type="text"
-            className="login-container-input"
-            placeholder={isSignUp ? "username" : "username/email"}
-            id="username"
-          ></input>
-          <br />
-          <input type="password" id="password" placeholder="password"></input>
-          <br />
-          <button onClick={isSignUp ? handleSignUp : handleLogin} type="button">
-            {isSignUp ? "Signup" : "Login"}
-          </button>
-          <br />
-          {isSignUp ? "Already have an account?" : "Don't have an account?"}
-          <button
-            type="button"
-            id="switchSignUp"
-            onClick={() => setIsSignUp((prevValue) => !prevValue)}
-          >
-            {isSignUp ? "Log in" : "Sign up"}
-          </button>
-          <br />
-        </form>
-      </div>
-    </div>
+    <div className='container'>
+            { showMessage && 
+                <div className="message-container">
+                    Congratulations! You have been successfully registered. You can now login!
+                </div>
+            }
+            <div className="login-container">
+                <h2>{isSignUp ? "Create new account": "Login with email"}</h2>
+                <form id="inputForm" >
+                    {isSignUp && <input type="text" placeholder="username" id="username"></input> }
+                    
+                    <input type="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" className="login-container-input"  placeholder="email" id="email" ></input>
+                    <br/>
+                    <input type="password" id="password" placeholder="password" ></input>
+                    <br/>
+                    <button onClick={isSignUp ? handleSignUp : handleLogin}type="button">{isSignUp ? "Signup" : "Login"}</button>
+                    <br/>
+                    {isSignUp ? "Already have an account?" : "Don't have an account?"}
+                    <button type="button" id="switchSignUp"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
+                    <br />
+                </form>
+            </div>
+        </div>
   );
 }
 
