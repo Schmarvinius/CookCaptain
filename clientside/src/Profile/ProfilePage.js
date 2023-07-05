@@ -18,6 +18,10 @@ const ProfilePage = () => {
   const { user } = useContext(UserContext);
   const { token, clearToken } = useContext(TokenContext);
 
+  const handleClickRecipe = (recipeId) => {
+    navigate(`../home/recipe/${recipeId}`);
+  };
+
   useEffect(() => {
     const fetchLikedRecipes = async () => {
       try {
@@ -103,7 +107,11 @@ const ProfilePage = () => {
               <div>
                 <ul className="list">
                   {createdRecipes.map((recipe) => (
-                    <li className="listitem-recipe" key={recipe._id}>
+                    <li
+                      className="listitem-recipe"
+                      key={recipe._id}
+                      onClick={() => handleClickRecipe(recipe._id)}
+                    >
                       <div className="image-wrapper">
                         <img
                           className="food-picture"
@@ -145,7 +153,11 @@ const ProfilePage = () => {
               <div>
                 <ul className="list">
                   {likedRecipes.map((recipe) => (
-                    <li className="listitem-recipe" key={recipe._id}>
+                    <li
+                      className="listitem-recipe"
+                      key={recipe._id}
+                      onClick={() => handleClickRecipe(recipe._id)}
+                    >
                       <div className="image-wrapper">
                         <img
                           className="food-picture"

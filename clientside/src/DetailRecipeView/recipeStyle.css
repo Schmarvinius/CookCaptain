@@ -2,16 +2,77 @@
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 90vh
+  height: 90vh;
 }
 
-.layout {
+.layout > div{
   width: 70vw;
-  height: 80vh;
-  background-color: rgba(255, 255, 255, 0.7);
+  height: auto;
+  max-height: 80vh;
+  background-color: rgba(255, 242, 229, 0.7);;
   max-width: 1000px;
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 3vh;
+  border: 1px solid black;
 }
 
 .No-Recipe{
     padding: 20px;
+}
+
+.stepList {
+  list-style: none;
+  padding: 0;
+  margin: 0 20px 0 20px;
+  max-height: 30vh;
+  overflow: scroll;
+}
+
+.stepList li {
+  background-color: rgba(255, 221, 187, 0.9);
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.ingredientList {
+  list-style: none;
+  padding: 0;
+  margin: 0 20px 0 20px;
+  max-height: 20vh;
+  overflow: scroll;
+}
+
+.ingredientList li {
+  background-color: rgba(255, 221, 187, 0.9);;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.recipeTitle {
+  margin-top: 0;
+}
+
+.back {
+  margin-bottom: 1%;
+}
+
+/* Design */
+.back {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  width: 70px;
+}
+
+.back:hover {
+  background-color: rgba(197, 197, 197, 0.7);
+  transition: all 0.3s;
+  cursor: pointer;
 }
