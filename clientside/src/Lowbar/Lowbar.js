@@ -2,7 +2,7 @@ import React from 'react';
 import './LowBarStyle.css';
 import { useNavigate } from "react-router-dom";
 
-function LowBar () {
+const LowBar = () => {
     const navigate = useNavigate();
 
     const handleImpressumClick = () => {

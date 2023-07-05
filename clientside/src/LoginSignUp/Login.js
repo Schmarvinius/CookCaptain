@@ -5,7 +5,7 @@ import { UserContext } from "../Context/UserContext";
 import { TokenContext } from "../Context/TokenContext";
 import axios from "axios";
 
-function MyLogin() {
+const MyLogin = () => {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const { setUser } = useContext(UserContext);
@@ -46,14 +46,14 @@ function MyLogin() {
       },
       body: JSON.stringify(data),
     })
-      .then(function (response) {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
           throw new Error("Login failed");
         }
       })
-      .then(function (userResponse) {
+      .then( (userResponse) => {
         console.log(userResponse);
         setToken(userResponse.token); // Update the token state using setToken (async)
         setUser(userResponse.user); // Update the user state using setUser (async)

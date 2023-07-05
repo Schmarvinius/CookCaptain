@@ -13,7 +13,7 @@ import { UserProvider } from "./Context/UserContext";
 import { TokenProvider } from "./Context/TokenContext";
 import Recipe from "./DetailRecipeView/recipe.js";
 
-function App() {
+const App = () => {
   return (
     // <div>
     //   <MyLogin/>
