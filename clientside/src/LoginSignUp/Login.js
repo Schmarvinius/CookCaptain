@@ -113,6 +113,9 @@ const MyLogin = () => {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
     }
+  const handleGuestLogin = () => {
+    navigate("/home");
+  }
   return (
     <div className='container'>
             { showMessage && 
@@ -134,6 +137,9 @@ const MyLogin = () => {
                     {isSignUp ? "Already have an account?" : "Don't have an account?"}
                     <button type="button" id="switchSignUp"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
                     <br />
+                    <button type="button" id="guestButton" onClick={handleGuestLogin}>Continue as guest
+                    </button>
+
                 </form>
             </div>
         </div>

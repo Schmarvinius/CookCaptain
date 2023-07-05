@@ -8,7 +8,7 @@ const Support = () => {
     const navigate = useNavigate();
     const handleBackClick = () => {
     if (user === null) {
-      return navigate("/");
+      return navigate("/login");
     }
     return navigate("/home");
     };
