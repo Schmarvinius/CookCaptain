@@ -2,3 +2,9 @@
   max-height: 70vh;
   overflow: auto;
 }
+@media (max-height: 960px) {
+  .scrollable-container {
+    max-height: 40vh;
+    overflow: auto;
+  }
+}
