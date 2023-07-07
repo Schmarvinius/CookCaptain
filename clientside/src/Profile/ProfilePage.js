@@ -72,7 +72,7 @@ const ProfilePage = () => {
     setIsConfirmationOpen(true);
 
     clearToken();
-    navigate("/");
+    navigate("/login");
   };
 
   const handleCancel = () => {

@@ -5,7 +5,7 @@ import { UserContext } from "../Context/UserContext";
 import { TokenContext } from "../Context/TokenContext";
 import axios from "axios";
 
-function MyLogin() {
+const MyLogin = () => {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const { setUser } = useContext(UserContext);
@@ -46,14 +46,14 @@ function MyLogin() {
       },
       body: JSON.stringify(data),
     })
-      .then(function (response) {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
           throw new Error("Login failed");
         }
       })
-      .then(function (userResponse) {
+      .then( (userResponse) => {
         console.log(userResponse);
         setToken(userResponse.token); // Update the token state using setToken (async)
         setUser(userResponse.user); // Update the user state using setUser (async)
@@ -113,11 +113,14 @@ function MyLogin() {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
     }
+  const handleGuestLogin = () => {
+    navigate("/home");
+  }
   return (
     <div className='container'>
             { showMessage && 
                 <div className="message-container">
-                    Congratulations! You have been successfully registered. You can now login!
+                    You have been successfully registered. You can now login!
                 </div>
             }
             <div className="login-container">
@@ -134,6 +137,9 @@ function MyLogin() {
                     {isSignUp ? "Already have an account?" : "Don't have an account?"}
                     <button type="button" id="switchSignUp"  onClick={() => setIsSignUp(prevValue => !prevValue)}>{isSignUp ? "Log in": "Sign up"}</button>
                     <br />
+                    <button type="button" id="guestButton" onClick={handleGuestLogin}>Continue as guest
+                    </button>
+
                 </form>
             </div>
         </div>

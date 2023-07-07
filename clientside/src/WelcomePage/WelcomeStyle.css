@@ -1,0 +1,36 @@
+body {
+    background-image: url(".//../images/doner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #414040;
+    overflow-x: hidden;
+    overflow-y: auto; 
+    height: 100vh;
+    width: 100vw;    
+  }
+  .container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  .text-container {
+    text-align: center;
+    width: 450px;
+    background-color: beige;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    font-size: 18px;
+  }
+  .text-container button {
+    margin-bottom: 20px;
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+  }
