@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 const Recipe = () => {
   const { id } = useParams();
   const [recipe, setRecipes] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecipe = async () => {

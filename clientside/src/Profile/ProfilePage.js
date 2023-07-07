@@ -69,6 +69,8 @@ const ProfilePage = () => {
   }, [reload]);
 
   const signOut = () => {
+    setIsConfirmationOpen(true);
+
     clearToken();
     navigate("/");
   };
@@ -123,15 +125,13 @@ const ProfilePage = () => {
                   <label>E-Mail:</label>
                   <label className="data">{user.email}</label>
                 </span>
-                {/* <form method="get" action="localhost:3000/redirect/password">
-              <a href="localhost:3001">reset password</a>
-            </form> */}
-                <input
-                  type="button"
-                  className="submitButton"
+                <button
+                  className="bottom submitButton"
                   value={"Sign Out"}
                   onClick={signOut}
-                ></input>
+                >
+                  Sign out
+                </button>
               </div>
             </div>
           ) : (
