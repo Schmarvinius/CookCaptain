@@ -32,7 +32,7 @@ const Headbar = () => {
             {user && user.name ? (
               <span>{user.name}</span>
             ) : (
-              <span>No user available</span>
+              <span>Guest</span>
             )}
           </div>
           <img className="headbar-picture" src={userIcon} alt="User-Icon" />

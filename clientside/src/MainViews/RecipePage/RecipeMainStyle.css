@@ -54,10 +54,12 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 20px;
-}
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-row-gap: 20px;
+  grid-column-gap: 10px;
+  padding: 0;
 
+}
 .image-wrapper {
   flex: 1;
   display: flex;
@@ -68,4 +70,7 @@
 .food-picture {
   max-width: 200px;
   max-height: auto;
+}
+@media (max-height: 960px) {
+  
 }

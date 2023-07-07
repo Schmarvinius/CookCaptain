@@ -52,7 +52,7 @@ header {
   margin-bottom: 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  /* max-width: fit-content  */
+  min-width: 220.5px;
 }
 
 .searchbar {
@@ -77,4 +77,79 @@ footer {
   background: #f2f2f2;
   padding: 16px;
   margin-top: auto;
+}
+
+@media (max-width: 2249px) {
+  .Linked {
+    flex-basis: calc(20%);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-width: 220.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Linked h2 {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 961px) {
+  .Linked {
+    flex-basis: 80%;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-width: 220.5px;
+    display:block ;
+    
+  }
+  .main {
+    flex-basis: 80%;
+  }
+}
+
+
+@media (max-width: 562px) {
+  .Linked {
+    flex-basis: 80%;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-width: 220.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Linked h2 {
+    margin-bottom: 8px;
+  }
+  
+  .main {
+    flex-basis: 80%;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-width: 220.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main h2 {
+    margin-bottom: 8px;
+  }
 }

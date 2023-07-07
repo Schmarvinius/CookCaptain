@@ -22,7 +22,6 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
   useEffect(() => {
     if (user !== null || user === undefined) {
       setLikedList(new Set(user.likedRecipes));
-      console.log("hi");
     }
   }, [user, likeRecipeChanged]);
 
@@ -85,62 +84,60 @@ const RecipeMain = ({ onLikeRecipeChange, likeRecipeChanged }) => {
   }, [searchQuery]);
 
   return (
-    <>
+    <div className="recipe-main-container">
       <div className="container-List">
-        <div classname="listitem-recipe">
-          {recipes.length > 0 ? (
-            <ul className="list">
-              {recipes.map((recipe) => (
-                <li
-                  className="listitem-recipe"
-                  key={recipe._id}
-                  onClick={() => handleClickRecipe(recipe._id)}
-                >
-                  <div className="Container-List-Recipe">
-                    <button
-                      className="buttonForLike"
+        {recipes.length > 0 ? (
+          <ul className="list">
+            {recipes.map((recipe) => (
+              <li
+                className="listitem-recipe"
+                key={recipe._id}
+                onClick={() => handleClickRecipe(recipe._id)}
+              >
+                <div className="Container-List-Recipe">
+                  <button
+                    className="buttonForLike"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handelLikeRecipe(recipe);
+                    }}
+                  >
+                    <img
+                      className="like-icon"
+                      src={likedList.has(recipe._id) ? likeIcon : notLikeIcon}
+                      alt="Like Icon"
+                    />
+                  </button>
+                  <div className="image-wrapper">
+                    <img
+                      className="food-picture"
+                      src={foodIcon}
+                      alt="Food-Icon"
+                    />
+                  </div>
+                  <div className="name-container">
+                    <span className="name">{recipe.name}</span>
+                  </div>
+                  <div className="author-container">
+                    <span
+                      className="author truncate"
                       onClick={(e) => {
                         e.stopPropagation();
-                        handelLikeRecipe(recipe);
+                        console.log(recipe.author);
                       }}
                     >
-                      <img
-                        className="like-icon"
-                        src={likedList.has(recipe._id) ? likeIcon : notLikeIcon}
-                        alt="Like Icon"
-                      />
-                    </button>
-                    <div className="image-wrapper">
-                      <img
-                        className="food-picture"
-                        src={foodIcon}
-                        alt="Food-Icon"
-                      />
-                    </div>
-                    <div className="name-container">
-                      <span className="name">{recipe.name}</span>
-                    </div>
-                    <div className="author-container">
-                      <span
-                        className="author truncate"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          console.log(recipe.author);
-                        }}
-                      >
-                        Author: {recipe.author}
-                      </span>
-                    </div>
+                      Author: {recipe.author}
+                    </span>
                   </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No recipes found.</p>
-          )}
-        </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No recipes found.</p>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
