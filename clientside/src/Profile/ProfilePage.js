@@ -19,7 +19,7 @@ const ProfilePage = () => {
   const [reload, setreload] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { token, clearToken } = useContext(TokenContext);
   const [recipe, setRecipe] = useState(null);
 
@@ -71,6 +71,7 @@ const ProfilePage = () => {
   const signOut = () => {
     setIsConfirmationOpen(true);
 
+    setUser(null);
     clearToken();
     navigate("/login");
   };
