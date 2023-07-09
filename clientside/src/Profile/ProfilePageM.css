@@ -1,0 +1,16 @@
+@media(max-device-width: 900px){
+    .siteContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .recipes {
+        display: flex;
+        flex-direction: column;
+    }
+}

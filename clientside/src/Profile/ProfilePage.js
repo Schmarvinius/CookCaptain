@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../src/Context/UserContext";
 import "./ProfilePage.css";
+import "./ProfilePageM.css";
 import userIcon from "../images/Exampleimage.png";
 import doner from "../images/doner.png";
 import { TokenContext } from "../../src/Context/TokenContext";
