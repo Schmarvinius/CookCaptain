@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../src/Context/UserContext";
 import "./ProfilePage.css";
+import "./ProfilePageM.css";
 import userIcon from "../images/Exampleimage.png";
 import doner from "../images/doner.png";
 import { TokenContext } from "../../src/Context/TokenContext";
@@ -19,7 +20,7 @@ const ProfilePage = () => {
   const [reload, setreload] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { token, clearToken } = useContext(TokenContext);
   const [recipe, setRecipe] = useState(null);
 
@@ -69,6 +70,9 @@ const ProfilePage = () => {
   }, [reload]);
 
   const signOut = () => {
+    setIsConfirmationOpen(true);
+
+    setUser(null);
     clearToken();
     navigate("/login");
   };
@@ -123,15 +127,13 @@ const ProfilePage = () => {
                   <label>E-Mail:</label>
                   <label className="data">{user.email}</label>
                 </span>
-                {/* <form method="get" action="localhost:3000/redirect/password">
-              <a href="localhost:3001">reset password</a>
-            </form> */}
-                <input
-                  type="button"
-                  className="submitButton"
+                <button
+                  className="bottom submitButton"
                   value={"Sign Out"}
                   onClick={signOut}
-                ></input>
+                >
+                  Sign out
+                </button>
               </div>
             </div>
           ) : (

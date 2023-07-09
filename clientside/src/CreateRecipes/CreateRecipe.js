@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../src/Context/UserContext";
 import "./CreateRecipe.css";
+import "./CreateRecipeM.css";
 import { TokenContext } from "../Context/TokenContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -93,92 +94,99 @@ const ProfilePage = () => {
   });
 
   return (
-    <div className="neuContainer">
-      <h1>Neues Rezept</h1>
-      <form onSubmit={handleFormSubmit} className="idk">
-        <div className="head">
-          <input
-            type="text"
-            placeholder="Titel"
-            value={title}
-            onChange={handleTitleChange}
-          ></input>
-          <textarea
-            placeholder="Beschreibung"
-            value={desc}
-            onChange={handleDescChange}
-          ></textarea>
-        </div>
-        <div className="form">
-          <div className="Schritte">
-            <h2>Schritte</h2>
-            {StepGroup.map((group) => (
-              <div key={group.id} className="entry">
-                <div className="title">
-                  <input
-                    type="text"
-                    name={`IT-${group.id}`}
-                    placeholder="Titel"
-                    required
-                  />
-                  <input
-                    type="button"
-                    onClick={() => handleStepRemoveInput(group.id)}
-                    value={"-"}
-                  />
-                </div>
-                <textarea
-                  type="text"
-                  name={`Instruction-${group.id}`}
-                  placeholder="Beschreibung"
-                  required
+    <>
+      <div className="create-Container">
+        <Link to="/profile">
+          <input value={"Back"} className="back"></input>
+        </Link>
+        <div>
+          <h1>Neues Rezept</h1>
+          <form onSubmit={handleFormSubmit} className="idk">
+            <div className="head">
+              <input
+                type="text"
+                placeholder="Titel"
+                value={title}
+                onChange={handleTitleChange}
+              ></input>
+              <textarea
+                placeholder="Beschreibung"
+                value={desc}
+                onChange={handleDescChange}
+              ></textarea>
+            </div>
+            <div className="form">
+              <div className="Schritte">
+                <h2>Schritte</h2>
+                {StepGroup.map((group) => (
+                  <div key={group.id} className="entry">
+                    <div className="title">
+                      <input
+                        type="text"
+                        name={`IT-${group.id}`}
+                        placeholder="Titel"
+                        required
+                      />
+                      <input
+                        type="button"
+                        onClick={() => handleStepRemoveInput(group.id)}
+                        value={"-"}
+                      />
+                    </div>
+                    <textarea
+                      type="text"
+                      name={`Instruction-${group.id}`}
+                      placeholder="Beschreibung"
+                      required
+                    />
+                  </div>
+                ))}
+                <input
+                  className="Add"
+                  type="button"
+                  onClick={handleStepAddInput}
+                  value={"Add Input"}
                 />
+                {/* Dynamisch erzeugen lassen */}
               </div>
-            ))}
-            <input
-              className="Add"
-              type="button"
-              onClick={handleStepAddInput}
-              value={"Add Input"}
-            />
-            {/* Dynamisch erzeugen lassen */}
-          </div>
-          <div className="Zutaten">
-            <h2>Zutaten</h2>
-            {IngredientGroup.map((group) => (
-              <div key={group.id} className="IngredientEntry">
-                <input
-                  className="IN"
-                  type="text"
-                  name={`Name-${group.id}`}
-                  placeholder="Name"
-                  required
-                />
-                <input
-                  className="Amount"
-                  type="text"
-                  name={`Amount-${group.id}`}
-                  placeholder="Menge"
-                  required
-                />
+              <div className="Zutaten">
+                <h2>Zutaten</h2>
+                {IngredientGroup.map((group) => (
+                  <div key={group.id} className="IngredientEntry">
+                    <input
+                      className="IN"
+                      type="text"
+                      name={`Name-${group.id}`}
+                      placeholder="Name"
+                      required
+                    />
+                    <input
+                      className="Amount"
+                      type="text"
+                      name={`Amount-${group.id}`}
+                      placeholder="Menge"
+                      required
+                    />
+                    <input
+                      type="button"
+                      onClick={() => handleIngredientRemoveInput(group.id)}
+                      value={"-"}
+                    />
+                  </div>
+                ))}
                 <input
                   type="button"
-                  onClick={() => handleIngredientRemoveInput(group.id)}
-                  value={"-"}
+                  className="Add"
+                  onClick={handleIngredientAddInput}
+                  value={"Add Input"}
                 />
               </div>
-            ))}
-            <input
-              type="button"
-              className="Add"
-              onClick={handleIngredientAddInput}
-              value={"Add Input"}
-            />
-          </div>
+            </div>
+            <input type="submit" className="Add"></input>
+          </form>
         </div>
-        <input type="submit" className="Add"></input>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 
