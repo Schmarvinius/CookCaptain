@@ -25,18 +25,22 @@ const App = () => {
         <main className="modules">
           <div className="Linked">
             <h2>Liked</h2>
-            <LinkedView
-              onLikeRecipeChange={handleLikeRecipeChange}
-              likeRecipeChanged={likeRecipeChanged}
-            />
+            <div className="mid">
+              <LinkedView
+                onLikeRecipeChange={handleLikeRecipeChange}
+                likeRecipeChanged={likeRecipeChanged}
+              />
+            </div>
           </div>
 
           <div className="main">
             <h2>Recipes</h2>
-            <RecipeMain
-              onLikeRecipeChange={handleLikeRecipeChange}
-              likeRecipeChanged={likeRecipeChanged}
-            />
+            <div>
+              <RecipeMain
+                onLikeRecipeChange={handleLikeRecipeChange}
+                likeRecipeChanged={likeRecipeChanged}
+              />
+            </div>
           </div>
         </main>
       </div>
