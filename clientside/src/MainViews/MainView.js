@@ -1,6 +1,8 @@
 import "./MainViewStyle.css";
 import React, { useContext, useEffect } from "react";
+import axios from "axios";
 import { UserContext } from "../Context/UserContext";
+import { TokenContext } from "../Context/TokenContext";
 import HeadBar from "./Headbar/Headbar.js";
 import RecipeMain from "./RecipePage/RecipeMain.js";
 import LinkedView from "./LinkedBar/LinkedView.js";
@@ -8,8 +10,26 @@ import { SearchProvider } from "../Context/SearchContext.js";
 import { useState } from "react";
 
 const App = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const { token } = useContext(TokenContext);
+
   useEffect(() => {}, [user]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!user && token) {
+        try {
+          axios.defaults.headers.common["Authorization"] = token;
+          const response = await axios.get(`http://localhost:3000/user/email`);
+          setUser(response.data);
+        } catch (error) {
+          console.error("Error fetching user email:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [token]);
 
   const [likeRecipeChanged, setLikeRecipeChanged] = useState(false);
 
