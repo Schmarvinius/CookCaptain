@@ -72,9 +72,3 @@
   max-width: 200px;
   max-height: auto;
 }
-@media (max-height: 960px) {
-  .container-List {
-    height: 40vh;
-    overflow: auto;
-  }
-}
