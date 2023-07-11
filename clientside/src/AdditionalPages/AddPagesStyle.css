@@ -1,7 +1,7 @@
 .background {
   background-color: rgb(255, 253, 233);
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   font-size: 18px;
 }
 
@@ -17,8 +17,16 @@
 
 .pageBody {
   padding: 1%;
-  padding-left: 17%;
   font-family: "Montserrat", sans-serif;
+  width: 70%;
+  height: 100vh;
+  margin: auto;
+}
+
+.pageBody > .impressum-content {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .textButton {
@@ -37,11 +45,12 @@
 }
 
 .contact-form {
-  max-width: 400px;
+  width: 70%;
 }
 
 .form-group {
   margin-bottom: 20px;
+  width: 70vw;
 }
 
 .contact-form label {
@@ -53,10 +62,9 @@
 .contact-form input[type="email"],
 .contact-form textarea {
   width: 100%;
+  border: 1px solid #181818;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-  
 }
 
 .contact-form button[type="submit"] {

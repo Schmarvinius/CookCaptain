@@ -1,0 +1,5 @@
+@media (max-device-width: 400px) {
+    .login-container {
+        width: 85%;
+    }
+}

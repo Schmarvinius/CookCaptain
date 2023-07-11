@@ -34,3 +34,10 @@ body {
     box-sizing: border-box;
     font-size: 18px;
   }
+
+  @media (max-device-width: 480px) {
+    .text-container {
+      width: 90%;
+      overflow: scroll;
+    }
+  }
