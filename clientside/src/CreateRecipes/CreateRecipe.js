@@ -100,31 +100,31 @@ const ProfilePage = () => {
           <input value={"Back"} className="back"></input>
         </Link>
         <div>
-          <h1>Neues Rezept</h1>
+          <h1>New Recipe</h1>
           <form onSubmit={handleFormSubmit} className="idk">
             <div className="head">
               <input
                 type="text"
-                placeholder="Titel"
+                placeholder="Title"
                 value={title}
                 onChange={handleTitleChange}
               ></input>
               <textarea
-                placeholder="Beschreibung"
+                placeholder="Description"
                 value={desc}
                 onChange={handleDescChange}
               ></textarea>
             </div>
             <div className="form">
               <div className="Schritte">
-                <h2>Schritte</h2>
+                <h2>Steps</h2>
                 {StepGroup.map((group) => (
                   <div key={group.id} className="entry">
                     <div className="title">
                       <input
                         type="text"
                         name={`IT-${group.id}`}
-                        placeholder="Titel"
+                        placeholder="Title"
                         required
                       />
                       <input
@@ -136,7 +136,7 @@ const ProfilePage = () => {
                     <textarea
                       type="text"
                       name={`Instruction-${group.id}`}
-                      placeholder="Beschreibung"
+                      placeholder="Description"
                       required
                     />
                   </div>
@@ -150,7 +150,7 @@ const ProfilePage = () => {
                 {/* Dynamisch erzeugen lassen */}
               </div>
               <div className="Zutaten">
-                <h2>Zutaten</h2>
+                <h2>Ingredients</h2>
                 {IngredientGroup.map((group) => (
                   <div key={group.id} className="IngredientEntry">
                     <input
@@ -164,7 +164,7 @@ const ProfilePage = () => {
                       className="Amount"
                       type="text"
                       name={`Amount-${group.id}`}
-                      placeholder="Menge"
+                      placeholder="Amount"
                       required
                     />
                     <input

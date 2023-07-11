@@ -17,6 +17,11 @@
     border-radius: 10px;
 }
 
+.profileData > div {
+    display: flex;
+    flex-direction: column;
+}
+
 .main2 {
     flex: 3;
     margin: 5px;
@@ -117,8 +122,9 @@
 }
 
 .profilePic {
-    max-width: 35vw;
-    max-height: 35vh;
+    align-self: center;
+    max-width: 40vw;
+    max-height: 40vh;
     height: auto;
     width: auto;
     border-radius: 10px;

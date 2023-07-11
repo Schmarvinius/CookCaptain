@@ -4,7 +4,7 @@ import { UserContext } from "../../src/Context/UserContext";
 import "./ProfilePage.css";
 import "./ProfilePageM.css";
 import userIcon from "../images/Exampleimage.png";
-import doner from "../images/doner.png";
+import profilePic from "../images/profile.png";
 import { TokenContext } from "../../src/Context/TokenContext";
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
@@ -110,11 +110,11 @@ const ProfilePage = () => {
       />
       <div className="siteContainer">
         <div className="profileData">
-          <h1>Über mich</h1>
+          <h1>About me</h1>
           {user ? (
             <div>
               <img
-                src={doner}
+                src={profilePic}
                 alt="profilePicture"
                 className="profilePic"
               ></img>
@@ -144,7 +144,7 @@ const ProfilePage = () => {
         <div className="main2">
           <div className="recipes">
             <div className="createdRecipes">
-              <h1>Erstellte Rezepte</h1>
+              <h1>Created Recipes</h1>
               {createdRecipes.length > 0 ? (
                 <div>
                   <ul className="list">
@@ -196,14 +196,14 @@ const ProfilePage = () => {
                     <input
                       type="submit"
                       className="submitButton"
-                      value={"Neues Rezept Erstellen"}
+                      value={"Create New Recipe"}
                     ></input>
                   </Link>
                 </div>
               )}
             </div>
             <div className="likedRecipes">
-              <h1>Favorisierte Rezepte</h1>
+              <h1>Liked Recipes</h1>
               {likedRecipes.length > 0 ? (
                 <div>
                   <ul className="list">
